@@ -8,6 +8,7 @@
 
 #import "DocumentViewController.h"
 #import "Document.h"
+#import "DocumentCell.h"
 
 @interface DocumentViewController ()
 
@@ -58,12 +59,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"DocumentCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    DocumentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DocumentCell"];
     Document *document = [documents objectAtIndex:indexPath.row];
-    cell.textLabel.text = document.title;
-    cell.detailTextLabel.text = document.description;
+    
+    cell.titleLabel.text = document.title;
+    cell.descriptionLabel.text = document.description;
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    dateFormatter.timeStyle = NSDateFormatterNoStyle;
+    
+    cell.modifiedDateLabel.text = [dateFormatter stringFromDate:document.modified];
     
     return cell;
 }
