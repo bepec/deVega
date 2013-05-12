@@ -20,6 +20,7 @@
 		CE7D146F172457B7000F72AF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7D146E172457B7000F72AF /* ViewController.m */; };
 		CE7E86BD173D532100A89241 /* DocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E86BC173D532100A89241 /* DocumentViewController.m */; };
 		CE7E86C0173D545E00A89241 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E86BF173D545E00A89241 /* Document.m */; };
+		CE81AD2B173F6FB200CFF8F7 /* DocumentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE81AD2A173F6FB200CFF8F7 /* DocumentCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,8 @@
 		CE7E86BC173D532100A89241 /* DocumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentViewController.m; sourceTree = "<group>"; };
 		CE7E86BE173D545E00A89241 /* Document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
 		CE7E86BF173D545E00A89241 /* Document.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
+		CE81AD29173F6FB100CFF8F7 /* DocumentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentCell.h; sourceTree = "<group>"; };
+		CE81AD2A173F6FB200CFF8F7 /* DocumentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +102,8 @@
 				CE7E86BC173D532100A89241 /* DocumentViewController.m */,
 				CE7E86BE173D545E00A89241 /* Document.h */,
 				CE7E86BF173D545E00A89241 /* Document.m */,
+				CE81AD29173F6FB100CFF8F7 /* DocumentCell.h */,
+				CE81AD2A173F6FB200CFF8F7 /* DocumentCell.m */,
 			);
 			path = DeVega;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 				CE7D146F172457B7000F72AF /* ViewController.m in Sources */,
 				CE7E86BD173D532100A89241 /* DocumentViewController.m in Sources */,
 				CE7E86C0173D545E00A89241 /* Document.m in Sources */,
+				CE81AD2B173F6FB200CFF8F7 /* DocumentCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
