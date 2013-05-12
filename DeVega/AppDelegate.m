@@ -7,12 +7,36 @@
 //
 
 #import "AppDelegate.h"
+#import "Document.h"
+#import "DocumentViewController.h"
 
-@implementation AppDelegate
+
+@implementation AppDelegate {
+    NSMutableArray *documents;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    documents = [NSMutableArray arrayWithCapacity: 20];
+    
+    Document *document = [Document new];
+    document.title = @"Diary";
+    document.description = @"The story of my life";
+    document.modified = [NSDate dateWithTimeIntervalSinceNow: 0];
+    [documents addObject: document];
+    
+    document = [Document new];
+    document.title = @"Vengeance of the limb";
+    document.description = @"A scary novel";
+    document.modified = [NSDate dateWithTimeIntervalSinceReferenceDate: 0];
+    [documents addObject: document];
+    
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    DocumentViewController *documentController = (DocumentViewController *)navigationController.topViewController;
+    documentController.documents = documents;
+    
     return YES;
 }
 							
