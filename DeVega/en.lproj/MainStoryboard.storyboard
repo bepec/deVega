@@ -52,9 +52,9 @@
                                     <constraint firstItem="V4b-kh-j7u" firstAttribute="leading" secondItem="2Yw-GK-PgP" secondAttribute="leading" constant="20" type="default" id="BZq-Hn-Vs0"/>
                                     <constraint firstItem="cag-7E-KGR" firstAttribute="leading" secondItem="2Yw-GK-PgP" secondAttribute="leading" constant="20" type="default" id="DcP-vV-fRA"/>
                                     <constraint firstItem="eEt-HB-jJ3" firstAttribute="leading" secondItem="cag-7E-KGR" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="M6q-bY-NHc"/>
+                                    <constraint firstItem="V4b-kh-j7u" firstAttribute="top" secondItem="2Yw-GK-PgP" secondAttribute="top" constant="6" type="user" id="P3t-uz-ZNL"/>
                                     <constraint firstAttribute="trailing" secondItem="eEt-HB-jJ3" secondAttribute="trailing" constant="20" type="default" id="Rk8-sA-pLa"/>
                                     <constraint firstItem="eEt-HB-jJ3" firstAttribute="top" secondItem="2Yw-GK-PgP" secondAttribute="top" type="default" id="SOp-te-Sfh"/>
-                                    <constraint firstItem="V4b-kh-j7u" firstAttribute="top" secondItem="2Yw-GK-PgP" secondAttribute="top" constant="6" type="user" id="Zuj-CD-AAZ"/>
                                     <constraint firstItem="cag-7E-KGR" firstAttribute="top" secondItem="2Yw-GK-PgP" secondAttribute="top" constant="25" id="jSL-TN-3v5"/>
                                     <constraint firstItem="eEt-HB-jJ3" firstAttribute="leading" secondItem="V4b-kh-j7u" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="zjb-ys-IRG"/>
                                 </constraints>
@@ -70,11 +70,64 @@
                             <outlet property="delegate" destination="urq-vg-s7O" id="1Cb-g0-T9Q"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Documents" id="AtE-2s-aCF"/>
+                    <navigationItem key="navigationItem" title="Documents" id="NBX-WS-7Cw">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="eCs-5z-Cns">
+                            <connections>
+                                <segue destination="FHJ-Gf-SMu" kind="modal" identifier="Editor" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="duQ-G8-Lwd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GA3-zo-OhL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-743" y="-854"/>
+        </scene>
+        <!--Editor View Controller - Edit document-->
+        <scene sceneID="KkM-ni-rFd">
+            <objects>
+                <viewController id="Lqt-d4-diV" customClass="EditorViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Vk-da-3p9">
+                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z31-K7-OaQ">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="z31-K7-OaQ" firstAttribute="top" secondItem="9Vk-da-3p9" secondAttribute="top" type="default" id="D1Z-a3-iJY"/>
+                            <constraint firstItem="z31-K7-OaQ" firstAttribute="trailing" secondItem="9Vk-da-3p9" secondAttribute="trailing" type="default" id="WfT-CY-pre"/>
+                            <constraint firstItem="z31-K7-OaQ" firstAttribute="bottom" secondItem="9Vk-da-3p9" secondAttribute="bottom" type="default" id="dfX-Ja-J56"/>
+                            <constraint firstItem="z31-K7-OaQ" firstAttribute="leading" secondItem="9Vk-da-3p9" secondAttribute="leading" type="default" id="i1s-yX-3tI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Edit document" id="oQd-o1-Az5">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="RiJ-th-H6W">
+                            <connections>
+                                <action selector="close:" destination="Lqt-d4-diV" id="MrE-l6-rfY"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="x10-rc-vix">
+                            <connections>
+                                <action selector="save:" destination="Lqt-d4-diV" id="v8d-Ps-6Am"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Brm-I7-wkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1200" y="-853"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CW6-oB-Dc6">
@@ -94,6 +147,25 @@
             </objects>
             <point key="canvasLocation" x="-1717" y="-854"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7lM-M5-PFM">
+            <objects>
+                <navigationController id="FHJ-Gf-SMu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="d9Z-8q-Obx"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hf8-Qu-Jbc">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Lqt-d4-diV" kind="relationship" relationship="rootViewController" id="7lK-D5-yMS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9wT-wg-Gur" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="226" y="-853"/>
+        </scene>
     </scenes>
     <classes>
         <class className="DocumentCell" superclassName="UITableViewCell">
@@ -106,6 +178,13 @@
         </class>
         <class className="DocumentViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DocumentViewController.h"/>
+        </class>
+        <class className="EditorViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditorViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="close:"/>
+                <relationship kind="action" name="save:"/>
+            </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>

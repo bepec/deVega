@@ -45,6 +45,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Editor"])
+    {
+        UINavigationController *navigationController = segue.destinationViewController;
+        EditorViewController *editorViewController = [[navigationController viewControllers] objectAtIndex:0];
+        editorViewController.delegate = self;
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -124,6 +134,18 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+#pragma mark - Editor view controller delegate
+
+- (void)editorViewControllerDidClose:(EditorViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)editorViewControllerDidSave:(EditorViewController *)controller
+{
+    // do nothing
 }
 
 @end
