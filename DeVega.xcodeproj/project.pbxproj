@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE337888177D784300FAC438 /* AttributeController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE337887177D784300FAC438 /* AttributeController.m */; };
+		CE33788B177D8BCE00FAC438 /* FontNameResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = CE33788A177D8BCD00FAC438 /* FontNameResolver.m */; };
 		CE7D1453172457B7000F72AF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7D1452172457B7000F72AF /* UIKit.framework */; };
 		CE7D1455172457B7000F72AF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7D1454172457B7000F72AF /* Foundation.framework */; };
 		CE7D1457172457B7000F72AF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7D1456172457B7000F72AF /* CoreGraphics.framework */; };
@@ -17,13 +19,17 @@
 		CE7D1467172457B7000F72AF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7D1466172457B7000F72AF /* Default@2x.png */; };
 		CE7D1469172457B7000F72AF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7D1468172457B7000F72AF /* Default-568h@2x.png */; };
 		CE7D146C172457B7000F72AF /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7D146A172457B7000F72AF /* MainStoryboard.storyboard */; };
-		CE7D146F172457B7000F72AF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7D146E172457B7000F72AF /* ViewController.m */; };
 		CE7E86BD173D532100A89241 /* DocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E86BC173D532100A89241 /* DocumentViewController.m */; };
 		CE7E86C0173D545E00A89241 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E86BF173D545E00A89241 /* Document.m */; };
 		CE81AD2B173F6FB200CFF8F7 /* DocumentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE81AD2A173F6FB200CFF8F7 /* DocumentCell.m */; };
+		CEB487741777528100464803 /* EditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB487731777528100464803 /* EditorViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE337886177D784300FAC438 /* AttributeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeController.h; sourceTree = "<group>"; };
+		CE337887177D784300FAC438 /* AttributeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeController.m; sourceTree = "<group>"; };
+		CE337889177D8BCD00FAC438 /* FontNameResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontNameResolver.h; sourceTree = "<group>"; };
+		CE33788A177D8BCD00FAC438 /* FontNameResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontNameResolver.m; sourceTree = "<group>"; };
 		CE7D144F172457B7000F72AF /* DeVega.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeVega.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7D1452172457B7000F72AF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CE7D1454172457B7000F72AF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -38,14 +44,14 @@
 		CE7D1466172457B7000F72AF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		CE7D1468172457B7000F72AF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CE7D146B172457B7000F72AF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		CE7D146D172457B7000F72AF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CE7D146E172457B7000F72AF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CE7E86BB173D532100A89241 /* DocumentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentViewController.h; sourceTree = "<group>"; };
 		CE7E86BC173D532100A89241 /* DocumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentViewController.m; sourceTree = "<group>"; };
 		CE7E86BE173D545E00A89241 /* Document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
 		CE7E86BF173D545E00A89241 /* Document.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
 		CE81AD29173F6FB100CFF8F7 /* DocumentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentCell.h; sourceTree = "<group>"; };
 		CE81AD2A173F6FB200CFF8F7 /* DocumentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentCell.m; sourceTree = "<group>"; };
+		CEB487721777528100464803 /* EditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditorViewController.h; sourceTree = "<group>"; };
+		CEB487731777528100464803 /* EditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditorViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,15 +101,19 @@
 				CE7D1461172457B7000F72AF /* AppDelegate.h */,
 				CE7D1462172457B7000F72AF /* AppDelegate.m */,
 				CE7D146A172457B7000F72AF /* MainStoryboard.storyboard */,
-				CE7D146D172457B7000F72AF /* ViewController.h */,
-				CE7D146E172457B7000F72AF /* ViewController.m */,
 				CE7D1459172457B7000F72AF /* Supporting Files */,
 				CE7E86BB173D532100A89241 /* DocumentViewController.h */,
 				CE7E86BC173D532100A89241 /* DocumentViewController.m */,
+				CEB487721777528100464803 /* EditorViewController.h */,
+				CEB487731777528100464803 /* EditorViewController.m */,
 				CE7E86BE173D545E00A89241 /* Document.h */,
 				CE7E86BF173D545E00A89241 /* Document.m */,
 				CE81AD29173F6FB100CFF8F7 /* DocumentCell.h */,
 				CE81AD2A173F6FB200CFF8F7 /* DocumentCell.m */,
+				CE337886177D784300FAC438 /* AttributeController.h */,
+				CE337887177D784300FAC438 /* AttributeController.m */,
+				CE337889177D8BCD00FAC438 /* FontNameResolver.h */,
+				CE33788A177D8BCD00FAC438 /* FontNameResolver.m */,
 			);
 			path = DeVega;
 			sourceTree = "<group>";
@@ -190,10 +200,12 @@
 			files = (
 				CE7D145F172457B7000F72AF /* main.m in Sources */,
 				CE7D1463172457B7000F72AF /* AppDelegate.m in Sources */,
-				CE7D146F172457B7000F72AF /* ViewController.m in Sources */,
 				CE7E86BD173D532100A89241 /* DocumentViewController.m in Sources */,
 				CE7E86C0173D545E00A89241 /* Document.m in Sources */,
 				CE81AD2B173F6FB200CFF8F7 /* DocumentCell.m in Sources */,
+				CEB487741777528100464803 /* EditorViewController.m in Sources */,
+				CE337888177D784300FAC438 /* AttributeController.m in Sources */,
+				CE33788B177D8BCE00FAC438 /* FontNameResolver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

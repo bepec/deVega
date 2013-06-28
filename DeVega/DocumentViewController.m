@@ -47,7 +47,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"Editor"])
+    if ([segue.identifier isEqualToString:@"New"])
     {
         UINavigationController *navigationController = segue.destinationViewController;
         EditorViewController *editorViewController = [[navigationController viewControllers] objectAtIndex:0];
@@ -141,11 +141,12 @@
 - (void)editorViewControllerDidClose:(EditorViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    [[[UIAlertView alloc] initWithTitle:@"deVega" message:@"Close" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
 
 - (void)editorViewControllerDidSave:(EditorViewController *)controller
 {
-    // do nothing
+    [[[UIAlertView alloc] initWithTitle:@"deVega" message:@"Save" delegate:nil cancelButtonTitle:@"OK"otherButtonTitles:nil] show];
 }
 
 @end

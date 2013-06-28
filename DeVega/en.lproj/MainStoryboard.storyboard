@@ -4,6 +4,80 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
+        <!--Editor View Controller - Document Editor-->
+        <scene sceneID="o44-hv-Nd4">
+            <objects>
+                <viewController id="9Nv-Ip-5l0" customClass="EditorViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="maN-kN-0Pq">
+                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IXF-Om-1rf">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="916" id="6OT-lK-Iln"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PxK-wA-z0F">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="DmL-2E-b04"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="B">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleBoldface:" destination="9Nv-Ip-5l0" eventType="touchDown" id="3NH-5M-CKX"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="K2K-hM-NvE">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="oUn-Ld-FWZ"/>
+                                </constraints>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" red="0.85191762706109642" green="0.8474373177863358" blue="0.88890540081521741" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="IXF-Om-1rf" firstAttribute="bottom" secondItem="maN-kN-0Pq" secondAttribute="bottom" type="default" id="2KI-rs-fba"/>
+                            <constraint firstItem="IXF-Om-1rf" firstAttribute="leading" secondItem="maN-kN-0Pq" secondAttribute="leading" type="default" id="F0L-Lj-oCT"/>
+                            <constraint firstItem="K2K-hM-NvE" firstAttribute="leading" secondItem="maN-kN-0Pq" secondAttribute="leading" constant="111" id="NIH-VQ-0Jg"/>
+                            <constraint firstItem="K2K-hM-NvE" firstAttribute="centerY" secondItem="PxK-wA-z0F" secondAttribute="centerY" type="default" id="SvE-bo-AC7"/>
+                            <constraint firstItem="IXF-Om-1rf" firstAttribute="top" secondItem="PxK-wA-z0F" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="X1M-cb-mEo"/>
+                            <constraint firstItem="PxK-wA-z0F" firstAttribute="leading" secondItem="maN-kN-0Pq" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="eXl-B8-nxL"/>
+                            <constraint firstItem="IXF-Om-1rf" firstAttribute="top" secondItem="K2K-hM-NvE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ifW-ww-MvQ"/>
+                            <constraint firstItem="IXF-Om-1rf" firstAttribute="trailing" secondItem="maN-kN-0Pq" secondAttribute="trailing" type="default" id="m9J-Cm-iNy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Document Editor" id="Ccb-vq-daW">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="G76-NV-GPc">
+                            <connections>
+                                <action selector="save:" destination="9Nv-Ip-5l0" id="c1Q-FW-xtG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="IXF-Om-1rf" id="PjX-99-cng"/>
+                        <outlet property="toggleBoldfaceButton" destination="PxK-wA-z0F" id="6TJ-l3-L14"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SzN-7S-3xT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="262" y="-854"/>
+        </scene>
         <!--Document View Controller - Documents-->
         <scene sceneID="cQk-PZ-7xo">
             <objects>
@@ -52,10 +126,10 @@
                                     <constraint firstItem="V4b-kh-j7u" firstAttribute="leading" secondItem="2Yw-GK-PgP" secondAttribute="leading" constant="20" type="default" id="BZq-Hn-Vs0"/>
                                     <constraint firstItem="cag-7E-KGR" firstAttribute="leading" secondItem="2Yw-GK-PgP" secondAttribute="leading" constant="20" type="default" id="DcP-vV-fRA"/>
                                     <constraint firstItem="eEt-HB-jJ3" firstAttribute="leading" secondItem="cag-7E-KGR" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="M6q-bY-NHc"/>
-                                    <constraint firstItem="V4b-kh-j7u" firstAttribute="top" secondItem="2Yw-GK-PgP" secondAttribute="top" constant="6" type="user" id="P3t-uz-ZNL"/>
                                     <constraint firstAttribute="trailing" secondItem="eEt-HB-jJ3" secondAttribute="trailing" constant="20" type="default" id="Rk8-sA-pLa"/>
                                     <constraint firstItem="eEt-HB-jJ3" firstAttribute="top" secondItem="2Yw-GK-PgP" secondAttribute="top" type="default" id="SOp-te-Sfh"/>
                                     <constraint firstItem="cag-7E-KGR" firstAttribute="top" secondItem="2Yw-GK-PgP" secondAttribute="top" constant="25" id="jSL-TN-3v5"/>
+                                    <constraint firstItem="V4b-kh-j7u" firstAttribute="top" secondItem="2Yw-GK-PgP" secondAttribute="top" constant="10" id="lT8-BO-6Lh"/>
                                     <constraint firstItem="eEt-HB-jJ3" firstAttribute="leading" secondItem="V4b-kh-j7u" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="zjb-ys-IRG"/>
                                 </constraints>
                                 <connections>
@@ -73,7 +147,7 @@
                     <navigationItem key="navigationItem" title="Documents" id="NBX-WS-7Cw">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="eCs-5z-Cns">
                             <connections>
-                                <segue destination="FHJ-Gf-SMu" kind="modal" identifier="Editor" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="duQ-G8-Lwd"/>
+                                <segue destination="9Nv-Ip-5l0" kind="push" id="sot-Y8-6r7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -81,53 +155,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GA3-zo-OhL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-743" y="-854"/>
-        </scene>
-        <!--Editor View Controller - Edit document-->
-        <scene sceneID="KkM-ni-rFd">
-            <objects>
-                <viewController id="Lqt-d4-diV" customClass="EditorViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9Vk-da-3p9">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z31-K7-OaQ">
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <attributedString key="attributedText">
-                                    <fragment>
-                                        <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <attributes>
-                                            <font key="NSFont" size="14" name="Helvetica"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="z31-K7-OaQ" firstAttribute="top" secondItem="9Vk-da-3p9" secondAttribute="top" type="default" id="D1Z-a3-iJY"/>
-                            <constraint firstItem="z31-K7-OaQ" firstAttribute="trailing" secondItem="9Vk-da-3p9" secondAttribute="trailing" type="default" id="WfT-CY-pre"/>
-                            <constraint firstItem="z31-K7-OaQ" firstAttribute="bottom" secondItem="9Vk-da-3p9" secondAttribute="bottom" type="default" id="dfX-Ja-J56"/>
-                            <constraint firstItem="z31-K7-OaQ" firstAttribute="leading" secondItem="9Vk-da-3p9" secondAttribute="leading" type="default" id="i1s-yX-3tI"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Edit document" id="oQd-o1-Az5">
-                        <barButtonItem key="leftBarButtonItem" title="Close" id="RiJ-th-H6W">
-                            <connections>
-                                <action selector="close:" destination="Lqt-d4-diV" id="MrE-l6-rfY"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="x10-rc-vix">
-                            <connections>
-                                <action selector="save:" destination="Lqt-d4-diV" id="v8d-Ps-6Am"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Brm-I7-wkU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1200" y="-853"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CW6-oB-Dc6">
@@ -147,49 +174,7 @@
             </objects>
             <point key="canvasLocation" x="-1717" y="-854"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="7lM-M5-PFM">
-            <objects>
-                <navigationController id="FHJ-Gf-SMu" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="d9Z-8q-Obx"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hf8-Qu-Jbc">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Lqt-d4-diV" kind="relationship" relationship="rootViewController" id="7lK-D5-yMS"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9wT-wg-Gur" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="226" y="-853"/>
-        </scene>
     </scenes>
-    <classes>
-        <class className="DocumentCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DocumentCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="modifiedDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="DocumentViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DocumentViewController.h"/>
-        </class>
-        <class className="EditorViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditorViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="close:"/>
-                <relationship kind="action" name="save:"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
