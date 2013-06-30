@@ -44,9 +44,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="toggleBoldface:" destination="9Nv-Ip-5l0" eventType="touchUpInside" id="bdS-LI-y8X"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.85191762706109642" green="0.8474373177863358" blue="0.88890540081521741" alpha="1" colorSpace="calibratedRGB"/>
@@ -171,35 +168,6 @@
             <point key="canvasLocation" x="-1717" y="-854"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="DocumentCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DocumentCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="modifiedDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="DocumentViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DocumentViewController.h"/>
-        </class>
-        <class className="EditorViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditorViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="close:"/>
-                <relationship kind="action" name="save:"/>
-                <relationship kind="action" name="toggleBoldface:"/>
-                <relationship kind="action" name="toggleItalics:"/>
-                <relationship kind="outlet" name="formatToolbar" candidateClass="UIToolbar"/>
-                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="toggleBoldfaceButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="toggleItalicsButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

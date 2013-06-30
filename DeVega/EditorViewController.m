@@ -9,10 +9,38 @@
 #import "EditorViewController.h"
 #import "AttributeController.h"
 
+
+@interface AttributeStateDelegateButton : NSObject<AttributeStateDelegate>
+{
+    UIButton *_button;
+}
+-(id)initWithButton:(UIButton*)button;
+-(void)update:(BOOL)state;
+
+@end
+
+
+@implementation AttributeStateDelegateButton
+
+-(id)initWithButton:(UIButton*)button
+{
+    self->_button = button;
+    return self;
+}
+
+-(void)update:(BOOL)state
+{
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        self->_button.highlighted = state;
+    }];
+}
+
+@end
+
+
 @interface EditorViewController ()
 
-+(NSDictionary*)attributesFromTextView:(UITextView*)textView;
-+(void)highlightButton:(UIButton*)button withValue:(BOOL)highlighted;
+//+(NSDictionary*)attributesFromTextView:(UITextView*)textView;
 
 @end
 
@@ -25,6 +53,8 @@
 @synthesize formatToolbar;
 @synthesize toggleBoldfaceButton;
 @synthesize toggleItalicsButton;
+
+// TODO: extract static methods
 
 +(NSDictionary*)attributesFromTextView:(UITextView*)textView
 {
@@ -41,11 +71,18 @@
     }
 }
 
-+(void)highlightButton:(UIButton*)button withValue:(BOOL)highlighted
++(void)applyAttributes:(NSDictionary*)attributes toTextView:(UITextView*)textView
 {
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        button.highlighted = highlighted;
-    }];
+    NSRange range = textView.selectedRange;
+    if (range.length == 0) {
+        textView.typingAttributes = attributes;
+    }
+    else {
+        NSMutableAttributedString *modifiedString = [[NSMutableAttributedString alloc] initWithAttributedString:textView.attributedText];
+        [modifiedString setAttributes:attributes range:range];
+        textView.attributedText = modifiedString;
+        textView.selectedRange = range;
+    }
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -61,7 +98,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.textView.delegate = self;
+
+    [self.toggleBoldfaceButton addTarget:self action:@selector(toggleBoldface:) forControlEvents:UIControlEventTouchUpInside];
+
     self->boldfaceController = [BoldfaceController new];
+    [self->boldfaceController setStateDelegate:[[AttributeStateDelegateButton alloc] initWithButton:toggleBoldfaceButton]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,22 +127,9 @@
     if (attributes == nil)
         return;
 
-    NSRange range = textView.selectedRange;
-    BOOL bold = !self.toggleBoldfaceButton.selected;
-    self.toggleBoldfaceButton.selected = bold;
-    [EditorViewController highlightButton:toggleBoldfaceButton withValue:bold];
-
+    BOOL bold = !self->boldfaceController.state;
     NSDictionary *modifiedAttributes = [self->boldfaceController set:bold in:attributes];
-
-    if (range.length == 0) {
-        self.textView.typingAttributes = modifiedAttributes;
-    }
-    else {
-        NSMutableAttributedString *modifiedString = [[NSMutableAttributedString alloc] initWithAttributedString:self.textView.attributedText];
-        [modifiedString setAttributes:modifiedAttributes range:range];
-        self.textView.attributedText = modifiedString;
-        self.textView.selectedRange = range;
-    }
+    [EditorViewController applyAttributes:modifiedAttributes toTextView:self.textView];
 }
 
 -(void)toggleItalics:(id)sender
@@ -115,10 +143,7 @@
     if (attributes == nil)
         return;
 
-    [self->boldfaceController update:attributes callback:^(BoldfaceController *sender) {
-        toggleBoldfaceButton.selected = sender.state;
-        [EditorViewController highlightButton:toggleBoldfaceButton withValue:sender.state];
-    }];
+    [self->boldfaceController update:attributes];
 }
 
 @end

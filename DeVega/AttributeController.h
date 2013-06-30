@@ -18,12 +18,19 @@
 
 //@interface AttributeCOntroller
 
+@protocol AttributeStateDelegate
+
+-(void)update:(BOOL)state;
+
+@end
+
+
 @interface BoldfaceController : NSObject //<AttributeController>
 
-//-(void)initWithCallback:(SEL)selector target:(id)object;
--(void)update:(NSDictionary*)attributes callback:(void(^)(BoldfaceController*))block;
+-(void)update:(NSDictionary*)attributes;
 -(NSDictionary*)set:(BOOL)value in:(NSDictionary*)attributes;
 -(BOOL)state;
+-(void)setStateDelegate:(id<AttributeStateDelegate>)delegate;
 
 @end
 

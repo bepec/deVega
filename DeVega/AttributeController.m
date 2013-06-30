@@ -12,22 +12,19 @@
 
 @interface BoldfaceController ()
 {
-    BOOL state;
+    BOOL _state;
     NSMutableDictionary *_attributes;
-    SEL notify;
+    id<AttributeStateDelegate> _delegate;
 }
+-(void)setState:(BOOL)value;
 @end
 
 @implementation BoldfaceController
 
--(void)update:(NSDictionary*)attributes callback:(void(^)(BoldfaceController*))block
+-(void)update:(NSDictionary*)attributes
 {
     UIFont *font = (UIFont*)[attributes objectForKey:NSFontAttributeName];
-    self->state = [FontNameResolver isBold:font.fontName];
-//    self->_attributes = [NSMutableDictionary  ]
-    if (block != nil) {
-        block(self);
-    }
+    self.state = [FontNameResolver isBold:font.fontName];
 }
 
 -(NSDictionary*)set:(BOOL)value in:(NSDictionary*)attributes
@@ -35,6 +32,8 @@
     UIFont *font = (UIFont*)[attributes objectForKey:NSFontAttributeName];
     if ([FontNameResolver isBold:font.fontName] == value)
         return attributes;
+    
+    self.state = value;
     
     NSMutableDictionary *modifiedAttributes = [NSMutableDictionary dictionaryWithDictionary:attributes];
     
@@ -45,9 +44,23 @@
     return modifiedAttributes;
 }
 
+-(void)setState:(BOOL)value
+{
+    if (self->_state == value)
+        return;
+    self->_state = value;
+    [self->_delegate update:self->_state];
+}
+
 -(BOOL)state
 {
-    return self->state;
+    return self->_state;
+}
+
+-(void)setStateDelegate:(id<AttributeStateDelegate>)delegate
+{
+    self->_delegate = delegate;
+    [delegate update:self.state];
 }
 
 @end
