@@ -18,7 +18,8 @@ NSString *const FONTNAME_BOLDITALIC = @"Helvetica-BoldItalic";
 
 +(BOOL)isBold:(NSString*)fontName
 {
-    return ([fontName compare:FONTNAME_BOLD] || [fontName compare:FONTNAME_BOLDITALIC]);
+    return ([fontName compare:FONTNAME_BOLD] == NSOrderedSame ||
+            [fontName compare:FONTNAME_BOLDITALIC] == NSOrderedSame);
 }
 
 +(BOOL)isItalic:(NSString*)fontName
@@ -29,18 +30,18 @@ NSString *const FONTNAME_BOLDITALIC = @"Helvetica-BoldItalic";
 +(NSString*)setBold:(BOOL)value from:(NSString*)fontName
 {
     if (value == TRUE) {
-        if ([fontName compare:FONTNAME_GENERAL]) {
+        if ([fontName compare:FONTNAME_GENERAL] == NSOrderedSame) {
             return FONTNAME_BOLD;
         }
-        else if ([fontName compare:FONTNAME_ITALIC]) {
+        else if ([fontName compare:FONTNAME_ITALIC] == NSOrderedSame) {
             return FONTNAME_BOLDITALIC;
         }
     }
     else {
-        if ([fontName compare:FONTNAME_BOLD]) {
+        if ([fontName compare:FONTNAME_BOLD] == NSOrderedSame) {
             return FONTNAME_GENERAL;
         }
-        else if ([fontName compare:FONTNAME_BOLDITALIC]) {
+        else if ([fontName compare:FONTNAME_BOLDITALIC] == NSOrderedSame) {
             return FONTNAME_ITALIC;
         }
     }
@@ -50,18 +51,18 @@ NSString *const FONTNAME_BOLDITALIC = @"Helvetica-BoldItalic";
 +(NSString*)setItalic:(BOOL)value from:(NSString*)fontName
 {
     if (value == TRUE) {
-        if ([fontName compare:FONTNAME_GENERAL]) {
+        if ([fontName compare:FONTNAME_GENERAL] == NSOrderedSame) {
             return FONTNAME_ITALIC;
         }
-        else if ([fontName compare:FONTNAME_BOLD]) {
+        else if ([fontName compare:FONTNAME_BOLD] == NSOrderedSame) {
             return FONTNAME_BOLDITALIC;
         }
     }
     else {
-        if ([fontName compare:FONTNAME_ITALIC]) {
+        if ([fontName compare:FONTNAME_ITALIC] == NSOrderedSame) {
             return FONTNAME_GENERAL;
         }
-        else if ([fontName compare:FONTNAME_BOLDITALIC]) {
+        else if ([fontName compare:FONTNAME_BOLDITALIC] == NSOrderedSame) {
             return FONTNAME_BOLD;
         }
     }

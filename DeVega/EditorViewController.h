@@ -33,6 +33,6 @@
 -(IBAction)toggleBoldface:(id)sender;
 -(IBAction)toggleItalics:(id)sender;
 
--(void)textViewDidBeginEditing:(UITextView *)textView;
+-(void)textViewDidChangeSelection:(UITextView *)textView;
 
 @end

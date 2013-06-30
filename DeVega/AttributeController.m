@@ -10,27 +10,44 @@
 #import "FontNameResolver.h"
 
 
+@interface BoldfaceController ()
+{
+    BOOL state;
+    NSMutableDictionary *_attributes;
+    SEL notify;
+}
+@end
+
 @implementation BoldfaceController
 
--(BOOL)updateValue:(NSDictionary*)attributes
+-(void)update:(NSDictionary*)attributes callback:(void(^)(BoldfaceController*))block
 {
     UIFont *font = (UIFont*)[attributes objectForKey:NSFontAttributeName];
-    return [FontNameResolver isBold:font.fontName];
+    self->state = [FontNameResolver isBold:font.fontName];
+//    self->_attributes = [NSMutableDictionary  ]
+    if (block != nil) {
+        block(self);
+    }
 }
 
 -(NSDictionary*)set:(BOOL)value in:(NSDictionary*)attributes
 {
-    if ([self updateValue:attributes] == value)
+    UIFont *font = (UIFont*)[attributes objectForKey:NSFontAttributeName];
+    if ([FontNameResolver isBold:font.fontName] == value)
         return attributes;
     
     NSMutableDictionary *modifiedAttributes = [NSMutableDictionary dictionaryWithDictionary:attributes];
-    UIFont *font = (UIFont*)[attributes objectForKey:NSFontAttributeName];
     
     NSString *newFontName = [FontNameResolver setBold:value from:font.fontName];
     [modifiedAttributes setObject:[UIFont fontWithName:newFontName size:font.pointSize]
                            forKey:NSFontAttributeName];
     
     return modifiedAttributes;
+}
+
+-(BOOL)state
+{
+    return self->state;
 }
 
 @end

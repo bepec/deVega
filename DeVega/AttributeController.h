@@ -10,15 +10,20 @@
 
 @protocol AttributeController
 
--(BOOL)updateValue:(NSDictionary*)attributes;
+//-(BOOL)
+-(void)update:(NSDictionary*)attributes;
 -(NSDictionary*)set:(BOOL)value in:(NSDictionary*)attributes;
 
 @end
 
+//@interface AttributeCOntroller
 
-@interface BoldfaceController : NSObject <AttributeController>
+@interface BoldfaceController : NSObject //<AttributeController>
 
--(BOOL)updateValue:(NSDictionary*)attributes;
+//-(void)initWithCallback:(SEL)selector target:(id)object;
+-(void)update:(NSDictionary*)attributes callback:(void(^)(BoldfaceController*))block;
 -(NSDictionary*)set:(BOOL)value in:(NSDictionary*)attributes;
+-(BOOL)state;
 
 @end
+
