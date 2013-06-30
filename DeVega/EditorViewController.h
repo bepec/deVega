@@ -23,7 +23,7 @@
 @property (nonatomic, weak) id <EditorViewControllerDelegate> delegate;
 
 @property (nonatomic, weak) IBOutlet UIButton *toggleBoldfaceButton;
-@property (nonatomic, weak) IBOutlet UIBarButtonItem *toggleItalicsButton;
+@property (nonatomic, weak) IBOutlet UIButton *toggleItalicsButton;
 @property (nonatomic, weak) IBOutlet UITextView *textView;
 @property (nonatomic, weak) IBOutlet UIToolbar *formatToolbar;
 
