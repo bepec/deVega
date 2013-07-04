@@ -22,6 +22,8 @@
 		CE7E86BD173D532100A89241 /* DocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E86BC173D532100A89241 /* DocumentViewController.m */; };
 		CE7E86C0173D545E00A89241 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E86BF173D545E00A89241 /* Document.m */; };
 		CE81AD2B173F6FB200CFF8F7 /* DocumentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE81AD2A173F6FB200CFF8F7 /* DocumentCell.m */; };
+		CE82148C178046250043A86F /* AttributeListCoctroller.m in Sources */ = {isa = PBXBuildFile; fileRef = CE82148B178046250043A86F /* AttributeListCoctroller.m */; };
+		CE8443E11780AEBE0008CFA7 /* AttributeControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8443E01780AEBE0008CFA7 /* AttributeControllerDelegate.m */; };
 		CEB487741777528100464803 /* EditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB487731777528100464803 /* EditorViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,10 @@
 		CE7E86BF173D545E00A89241 /* Document.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
 		CE81AD29173F6FB100CFF8F7 /* DocumentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentCell.h; sourceTree = "<group>"; };
 		CE81AD2A173F6FB200CFF8F7 /* DocumentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentCell.m; sourceTree = "<group>"; };
+		CE82148A178046250043A86F /* AttributeListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeListController.h; sourceTree = "<group>"; };
+		CE82148B178046250043A86F /* AttributeListCoctroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeListCoctroller.m; sourceTree = "<group>"; };
+		CE8443DF1780AEBE0008CFA7 /* AttributeControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeControllerDelegate.h; sourceTree = "<group>"; };
+		CE8443E01780AEBE0008CFA7 /* AttributeControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeControllerDelegate.m; sourceTree = "<group>"; };
 		CEB487721777528100464803 /* EditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditorViewController.h; sourceTree = "<group>"; };
 		CEB487731777528100464803 /* EditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditorViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +120,10 @@
 				CE337887177D784300FAC438 /* AttributeController.m */,
 				CE337889177D8BCD00FAC438 /* FontNameResolver.h */,
 				CE33788A177D8BCD00FAC438 /* FontNameResolver.m */,
+				CE82148A178046250043A86F /* AttributeListController.h */,
+				CE82148B178046250043A86F /* AttributeListCoctroller.m */,
+				CE8443DF1780AEBE0008CFA7 /* AttributeControllerDelegate.h */,
+				CE8443E01780AEBE0008CFA7 /* AttributeControllerDelegate.m */,
 			);
 			path = DeVega;
 			sourceTree = "<group>";
@@ -206,6 +216,8 @@
 				CEB487741777528100464803 /* EditorViewController.m in Sources */,
 				CE337888177D784300FAC438 /* AttributeController.m in Sources */,
 				CE33788B177D8BCE00FAC438 /* FontNameResolver.m in Sources */,
+				CE82148C178046250043A86F /* AttributeListCoctroller.m in Sources */,
+				CE8443E11780AEBE0008CFA7 /* AttributeControllerDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

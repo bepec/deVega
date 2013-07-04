@@ -25,13 +25,9 @@
 @property (nonatomic, weak) IBOutlet UIButton *toggleBoldfaceButton;
 @property (nonatomic, weak) IBOutlet UIButton *toggleItalicsButton;
 @property (nonatomic, weak) IBOutlet UITextView *textView;
-@property (nonatomic, weak) IBOutlet UIToolbar *formatToolbar;
 
 -(IBAction)close:(id)sender;
 -(IBAction)save:(id)sender;
-
--(IBAction)toggleBoldface:(id)sender;
--(IBAction)toggleItalics:(id)sender;
 
 -(void)textViewDidChangeSelection:(UITextView *)textView;
 

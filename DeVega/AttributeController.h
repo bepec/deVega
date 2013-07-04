@@ -7,30 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AttributeListController.h"
+#import "AttributeControllerDelegate.h"
 
 @protocol AttributeController
 
-//-(BOOL)
 -(void)update:(NSDictionary*)attributes;
 -(NSDictionary*)set:(BOOL)value in:(NSDictionary*)attributes;
 
 @end
 
-//@interface AttributeCOntroller
+@interface BoldfaceController : NSObject <AttributeListSubscriber>//<AttributeController>
 
-@protocol AttributeStateDelegate
-
--(void)update:(BOOL)state;
-
-@end
-
-
-@interface BoldfaceController : NSObject //<AttributeController>
-
--(void)update:(NSDictionary*)attributes;
--(NSDictionary*)set:(BOOL)value in:(NSDictionary*)attributes;
+-(id)initWithAttributeListController:(id<AttributeListController>)attributeListController;
+-(void)setAttributeState:(BOOL)value;
 -(BOOL)state;
--(void)setStateDelegate:(id<AttributeStateDelegate>)delegate;
+-(void)setDelegate:(id<AttributeControllerDelegate>)delegate;
+-(void)attributesChanged:(NSDictionary *)attributes;
 
 @end
-
