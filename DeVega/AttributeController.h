@@ -10,19 +10,22 @@
 #import "AttributeListController.h"
 #import "AttributeControllerDelegate.h"
 
-@protocol AttributeController
+//@protocol AttributeController
+//
+//-(void)update:(NSDictionary*)attributes;
+//-(NSDictionary*)set:(BOOL)value in:(NSDictionary*)attributes;
+//
+//@end
 
--(void)update:(NSDictionary*)attributes;
--(NSDictionary*)set:(BOOL)value in:(NSDictionary*)attributes;
+@interface AttributeController : NSObject <AttributeListSubscriber>
 
-@end
++(id)createBoldfaceController;
++(id)createItalicsController;
 
-@interface BoldfaceController : NSObject <AttributeListSubscriber>//<AttributeController>
-
--(id)initWithAttributeListController:(id<AttributeListController>)attributeListController;
+-(void)setAttributeListController:(id<AttributeListController>)attributeListController;
+-(void)setDelegate:(id<AttributeControllerDelegate>)delegate;
 -(void)setAttributeState:(BOOL)value;
 -(BOOL)state;
--(void)setDelegate:(id<AttributeControllerDelegate>)delegate;
 -(void)attributesChanged:(NSDictionary *)attributes;
 
 @end

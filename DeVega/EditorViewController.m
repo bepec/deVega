@@ -12,7 +12,8 @@
 
 @interface EditorViewController ()
 {
-    BoldfaceController *boldfaceController;
+//    AttributeController *boldfaceController;
+    NSSet *attributeControllers;
     id<AttributeListController> attributeListController;
 }
 
@@ -42,8 +43,11 @@
     
     self->attributeListController = (id<AttributeListController>)[[AttributeListControllerTextView alloc] initWithTextView:self.textView];
     
-    self->boldfaceController = [[BoldfaceController alloc] initWithAttributeListController:(id<AttributeListController>)self->attributeListController];
-    self->boldfaceController.delegate = [AttributeControllerDelegateFactory delegateWithButton:toggleBoldfaceButton andBlock:^{ [self->boldfaceController setAttributeState:!self->boldfaceController.state]; }];
+    AttributeController *boldfaceController = [AttributeController createBoldfaceController];
+    boldfaceController.attributeListController = (id<AttributeListController>)self->attributeListController;
+    boldfaceController.delegate = [AttributeControllerDelegateFactory delegateWithButton:toggleBoldfaceButton andBlock:^{ [boldfaceController setAttributeState:!boldfaceController.state]; }];
+
+    self->attributeControllers = [NSSet setWithObjects:boldfaceController, nil];
 }
 
 - (void)didReceiveMemoryWarning

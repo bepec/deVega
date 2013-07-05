@@ -10,30 +10,61 @@
 #import "FontNameResolver.h"
 
 
-@interface BoldfaceController ()
+@interface AttributeController ()
 {
     BOOL _state;
     NSMutableDictionary *_attributes;
     id<AttributeControllerDelegate> _delegate;
     id<AttributeListController> _attributeListController;
+    
+    BOOL (^_getStateFromFont)(UIFont *font);
+    UIFont* (^_makeFontForState)(UIFont *font, BOOL state);
 }
+-(id)init;
 @end
 
-@implementation BoldfaceController
+@implementation AttributeController
 
--(id)initWithAttributeListController:(id<AttributeListController>)attributeListController
++(id)createBoldfaceController
 {
-    self = [super init];
+    AttributeController *controller = [AttributeController new];
     
-    if (self)
-    {
-        self->_delegate = nil;
-        self->_state = NO;
-        self->_attributeListController = attributeListController;
-        [attributeListController subscribe:self];
-    }
+    controller->_getStateFromFont = ^BOOL(UIFont *font) {
+        return [FontNameResolver isBold:font.fontName];
+    };
     
+    controller->_makeFontForState = ^UIFont*(UIFont *font, BOOL state) {
+        return [UIFont fontWithName:[FontNameResolver setBold:state from:font.fontName] size:font.pointSize];
+    };
+    
+    return controller;
+}
+
++(id)createItalicsController
+{
+    AttributeController *controller = [AttributeController new];
+    
+    controller->_getStateFromFont = ^BOOL(UIFont *font) {
+        return [FontNameResolver isItalic:font.fontName];
+    };
+    
+    controller->_makeFontForState = ^UIFont*(UIFont *font, BOOL state) {
+        return [UIFont fontWithName:[FontNameResolver setItalic:state from:font.fontName] size:font.pointSize];
+    };
+    
+    return controller;
+}
+
+-(id)init
+{
+    self->_state = NO;
     return self;
+}
+
+-(void)setAttributeListController:(id<AttributeListController>)attributeListController
+{
+    self->_attributeListController = attributeListController;
+    [attributeListController subscribe:self];
 }
 
 -(void)setAttributeState:(BOOL)value
@@ -41,15 +72,13 @@
     NSDictionary *attributes = [self->_attributeListController attributes];
     
     UIFont *font = (UIFont*)[attributes objectForKey:NSFontAttributeName];
-    if ([FontNameResolver isBold:font.fontName] == value)
+    if (self->_getStateFromFont(font) == value)
         return;
     
-    NSMutableDictionary *modifiedAttributes = [NSMutableDictionary dictionaryWithDictionary:attributes];
-    
-    NSString *newFontName = [FontNameResolver setBold:value from:font.fontName];
-    [modifiedAttributes setObject:[UIFont fontWithName:newFontName size:font.pointSize]
-                           forKey:NSFontAttributeName];
+    UIFont *newFont = self->_makeFontForState(font, value);
 
+    NSMutableDictionary *modifiedAttributes = [NSMutableDictionary dictionaryWithDictionary:attributes];
+    [modifiedAttributes setObject:newFont forKey:NSFontAttributeName];
     [self->_attributeListController setAttributes:modifiedAttributes];
 }
 
@@ -69,7 +98,7 @@
     if (attributes == nil)
         return;
     UIFont *font = (UIFont*)[attributes objectForKey:NSFontAttributeName];
-    BOOL newState = [FontNameResolver isBold:font.fontName];
+    BOOL newState = self->_getStateFromFont(font);
     if (newState != self.state) {
         self->_state = newState;
         [self->_delegate update:self->_state];
