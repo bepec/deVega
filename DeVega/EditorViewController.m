@@ -47,7 +47,11 @@
     boldfaceController.attributeListController = (id<AttributeListController>)self->attributeListController;
     boldfaceController.delegate = [AttributeControllerDelegateFactory delegateWithButton:toggleBoldfaceButton andBlock:^{ [boldfaceController setAttributeState:!boldfaceController.state]; }];
 
-    self->attributeControllers = [NSSet setWithObjects:boldfaceController, nil];
+    AttributeController *italicsController = [AttributeController createItalicsController];
+    italicsController.attributeListController = (id<AttributeListController>)self->attributeListController;
+    italicsController.delegate = [AttributeControllerDelegateFactory delegateWithButton:toggleItalicsButton andBlock:^{ [italicsController setAttributeState:!italicsController.state]; }];
+    
+    self->attributeControllers = [NSSet setWithObjects:boldfaceController, italicsController, nil];
 }
 
 - (void)didReceiveMemoryWarning

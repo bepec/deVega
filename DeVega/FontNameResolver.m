@@ -12,8 +12,8 @@
 
 NSString *const FONTNAME_GENERAL = @"Helvetica";
 NSString *const FONTNAME_BOLD = @"Helvetica-Bold";
-NSString *const FONTNAME_ITALIC = @"Helvetica-Italic";
-NSString *const FONTNAME_BOLDITALIC = @"Helvetica-BoldItalic";
+NSString *const FONTNAME_ITALIC = @"Helvetica-Oblique";
+NSString *const FONTNAME_BOLDITALIC = @"Helvetica-BoldOblique";
 
 
 +(BOOL)isBold:(NSString*)fontName
@@ -24,7 +24,8 @@ NSString *const FONTNAME_BOLDITALIC = @"Helvetica-BoldItalic";
 
 +(BOOL)isItalic:(NSString*)fontName
 {
-    return ([fontName compare:FONTNAME_ITALIC] || [fontName compare:FONTNAME_BOLDITALIC]);
+    return ([fontName compare:FONTNAME_ITALIC] == NSOrderedSame ||
+            [fontName compare:FONTNAME_BOLDITALIC] == NSOrderedSame);
 }
 
 +(NSString*)setBold:(BOOL)value from:(NSString*)fontName
