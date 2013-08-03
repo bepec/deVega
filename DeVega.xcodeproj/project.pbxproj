@@ -31,6 +31,9 @@
 		CEC26B8D17AD4BFF000B72B0 /* DeVegaTest-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEC26B8517AD4BFF000B72B0 /* DeVegaTest-Info.plist */; };
 		CEC26B8F17AD4BFF000B72B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEC26B8917AD4BFF000B72B0 /* InfoPlist.strings */; };
 		CEC26B9117AD8128000B72B0 /* RtfSyntaxParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC26B7E17AD42EB000B72B0 /* RtfSyntaxParser.m */; };
+		CEC26B9517AD8312000B72B0 /* AttributedStringBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC26B9417AD8312000B72B0 /* AttributedStringBuilder.m */; };
+		CEC26B9817AD83A7000B72B0 /* AttributedStringBuilderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC26B9717AD83A7000B72B0 /* AttributedStringBuilderTest.m */; };
+		CEC26B9917AD852F000B72B0 /* RtfSyntaxParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC26B8C17AD4BFF000B72B0 /* RtfSyntaxParserTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +80,10 @@
 		CEC26B8A17AD4BFF000B72B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CEC26B8B17AD4BFF000B72B0 /* RtfSyntaxParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RtfSyntaxParserTest.h; sourceTree = "<group>"; };
 		CEC26B8C17AD4BFF000B72B0 /* RtfSyntaxParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RtfSyntaxParserTest.m; sourceTree = "<group>"; };
+		CEC26B9317AD8312000B72B0 /* AttributedStringBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttributedStringBuilder.h; path = Rtf/AttributedStringBuilder.h; sourceTree = "<group>"; };
+		CEC26B9417AD8312000B72B0 /* AttributedStringBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttributedStringBuilder.m; path = Rtf/AttributedStringBuilder.m; sourceTree = "<group>"; };
+		CEC26B9617AD83A7000B72B0 /* AttributedStringBuilderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributedStringBuilderTest.h; sourceTree = "<group>"; };
+		CEC26B9717AD83A7000B72B0 /* AttributedStringBuilderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributedStringBuilderTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +196,8 @@
 			children = (
 				CEC26B7D17AD42EB000B72B0 /* RtfSyntaxParser.h */,
 				CEC26B7E17AD42EB000B72B0 /* RtfSyntaxParser.m */,
+				CEC26B9317AD8312000B72B0 /* AttributedStringBuilder.h */,
+				CEC26B9417AD8312000B72B0 /* AttributedStringBuilder.m */,
 			);
 			name = Rtf;
 			sourceTree = "<group>";
@@ -206,13 +215,23 @@
 		CEC26B8417AD4BFF000B72B0 /* DeVegaTest */ = {
 			isa = PBXGroup;
 			children = (
+				CEC26B9217AD82DB000B72B0 /* Supporting */,
+				CEC26B8B17AD4BFF000B72B0 /* RtfSyntaxParserTest.h */,
+				CEC26B8C17AD4BFF000B72B0 /* RtfSyntaxParserTest.m */,
+				CEC26B9617AD83A7000B72B0 /* AttributedStringBuilderTest.h */,
+				CEC26B9717AD83A7000B72B0 /* AttributedStringBuilderTest.m */,
+			);
+			path = DeVegaTest;
+			sourceTree = "<group>";
+		};
+		CEC26B9217AD82DB000B72B0 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
 				CEC26B8517AD4BFF000B72B0 /* DeVegaTest-Info.plist */,
 				CEC26B8617AD4BFF000B72B0 /* DeVegaTest-Prefix.pch */,
 				CEC26B8917AD4BFF000B72B0 /* InfoPlist.strings */,
-				CEC26B8B17AD4BFF000B72B0 /* RtfSyntaxParserTest.h */,
-				CEC26B8C17AD4BFF000B72B0 /* RtfSyntaxParserTest.m */,
 			);
-			path = DeVegaTest;
+			name = Supporting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,7 +362,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEC26B9917AD852F000B72B0 /* RtfSyntaxParserTest.m in Sources */,
 				CEC26B9117AD8128000B72B0 /* RtfSyntaxParser.m in Sources */,
+				CEC26B9517AD8312000B72B0 /* AttributedStringBuilder.m in Sources */,
+				CEC26B9817AD83A7000B72B0 /* AttributedStringBuilderTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
