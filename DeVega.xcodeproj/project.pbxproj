@@ -25,6 +25,9 @@
 		CE82148C178046250043A86F /* AttributeListCoctroller.m in Sources */ = {isa = PBXBuildFile; fileRef = CE82148B178046250043A86F /* AttributeListCoctroller.m */; };
 		CE8443E11780AEBE0008CFA7 /* AttributeControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8443E01780AEBE0008CFA7 /* AttributeControllerDelegate.m */; };
 		CEB487741777528100464803 /* EditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB487731777528100464803 /* EditorViewController.m */; };
+		CEC26B6917AD1158000B72B0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC26B6817AD1158000B72B0 /* SenTestingKit.framework */; };
+		CEC26B6B17AD1158000B72B0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC26B6A17AD1158000B72B0 /* Cocoa.framework */; };
+		CEC26B7F17AD42EB000B72B0 /* RtfSyntaxParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC26B7E17AD42EB000B72B0 /* RtfSyntaxParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +61,14 @@
 		CE8443E01780AEBE0008CFA7 /* AttributeControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeControllerDelegate.m; sourceTree = "<group>"; };
 		CEB487721777528100464803 /* EditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditorViewController.h; sourceTree = "<group>"; };
 		CEB487731777528100464803 /* EditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditorViewController.m; sourceTree = "<group>"; };
+		CEC26B6717AD1158000B72B0 /* DeVegaTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeVegaTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC26B6817AD1158000B72B0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		CEC26B6A17AD1158000B72B0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		CEC26B6D17AD1158000B72B0 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		CEC26B6E17AD1158000B72B0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CEC26B6F17AD1158000B72B0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CEC26B7D17AD42EB000B72B0 /* RtfSyntaxParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RtfSyntaxParser.h; path = Rtf/RtfSyntaxParser.h; sourceTree = "<group>"; };
+		CEC26B7E17AD42EB000B72B0 /* RtfSyntaxParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RtfSyntaxParser.m; path = Rtf/RtfSyntaxParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +79,15 @@
 				CE7D1453172457B7000F72AF /* UIKit.framework in Frameworks */,
 				CE7D1455172457B7000F72AF /* Foundation.framework in Frameworks */,
 				CE7D1457172457B7000F72AF /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEC26B6317AD1158000B72B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEC26B6917AD1158000B72B0 /* SenTestingKit.framework in Frameworks */,
+				CEC26B6B17AD1158000B72B0 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				CE7D144F172457B7000F72AF /* DeVega.app */,
+				CEC26B6717AD1158000B72B0 /* DeVegaTest.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,6 +118,9 @@
 				CE7D1452172457B7000F72AF /* UIKit.framework */,
 				CE7D1454172457B7000F72AF /* Foundation.framework */,
 				CE7D1456172457B7000F72AF /* CoreGraphics.framework */,
+				CEC26B6817AD1158000B72B0 /* SenTestingKit.framework */,
+				CEC26B6A17AD1158000B72B0 /* Cocoa.framework */,
+				CEC26B6C17AD1158000B72B0 /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -104,6 +128,7 @@
 		CE7D1458172457B7000F72AF /* DeVega */ = {
 			isa = PBXGroup;
 			children = (
+				CEC26B3D17AD0E14000B72B0 /* Rtf */,
 				CE7D1461172457B7000F72AF /* AppDelegate.h */,
 				CE7D1462172457B7000F72AF /* AppDelegate.m */,
 				CE7D146A172457B7000F72AF /* MainStoryboard.storyboard */,
@@ -116,14 +141,7 @@
 				CE7E86BF173D545E00A89241 /* Document.m */,
 				CE81AD29173F6FB100CFF8F7 /* DocumentCell.h */,
 				CE81AD2A173F6FB200CFF8F7 /* DocumentCell.m */,
-				CE337886177D784300FAC438 /* AttributeController.h */,
-				CE337887177D784300FAC438 /* AttributeController.m */,
-				CE337889177D8BCD00FAC438 /* FontNameResolver.h */,
-				CE33788A177D8BCD00FAC438 /* FontNameResolver.m */,
-				CE82148A178046250043A86F /* AttributeListController.h */,
-				CE82148B178046250043A86F /* AttributeListCoctroller.m */,
-				CE8443DF1780AEBE0008CFA7 /* AttributeControllerDelegate.h */,
-				CE8443E01780AEBE0008CFA7 /* AttributeControllerDelegate.m */,
+				CE7E082617927E3800D91026 /* AttributeControl */,
 			);
 			path = DeVega;
 			sourceTree = "<group>";
@@ -140,6 +158,40 @@
 				CE7D1468172457B7000F72AF /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CE7E082617927E3800D91026 /* AttributeControl */ = {
+			isa = PBXGroup;
+			children = (
+				CE337886177D784300FAC438 /* AttributeController.h */,
+				CE337887177D784300FAC438 /* AttributeController.m */,
+				CE337889177D8BCD00FAC438 /* FontNameResolver.h */,
+				CE33788A177D8BCD00FAC438 /* FontNameResolver.m */,
+				CE82148A178046250043A86F /* AttributeListController.h */,
+				CE82148B178046250043A86F /* AttributeListCoctroller.m */,
+				CE8443DF1780AEBE0008CFA7 /* AttributeControllerDelegate.h */,
+				CE8443E01780AEBE0008CFA7 /* AttributeControllerDelegate.m */,
+			);
+			name = AttributeControl;
+			sourceTree = "<group>";
+		};
+		CEC26B3D17AD0E14000B72B0 /* Rtf */ = {
+			isa = PBXGroup;
+			children = (
+				CEC26B7D17AD42EB000B72B0 /* RtfSyntaxParser.h */,
+				CEC26B7E17AD42EB000B72B0 /* RtfSyntaxParser.m */,
+			);
+			name = Rtf;
+			sourceTree = "<group>";
+		};
+		CEC26B6C17AD1158000B72B0 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CEC26B6D17AD1158000B72B0 /* AppKit.framework */,
+				CEC26B6E17AD1158000B72B0 /* CoreData.framework */,
+				CEC26B6F17AD1158000B72B0 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +213,24 @@
 			productName = DeVega;
 			productReference = CE7D144F172457B7000F72AF /* DeVega.app */;
 			productType = "com.apple.product-type.application";
+		};
+		CEC26B6617AD1158000B72B0 /* DeVegaTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEC26B7A17AD1159000B72B0 /* Build configuration list for PBXNativeTarget "DeVegaTest" */;
+			buildPhases = (
+				CEC26B6217AD1158000B72B0 /* Sources */,
+				CEC26B6317AD1158000B72B0 /* Frameworks */,
+				CEC26B6417AD1158000B72B0 /* Resources */,
+				CEC26B6517AD1158000B72B0 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DeVegaTest;
+			productName = DeVegaTest;
+			productReference = CEC26B6717AD1158000B72B0 /* DeVegaTest.octest */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -184,6 +254,7 @@
 			projectRoot = "";
 			targets = (
 				CE7D144E172457B7000F72AF /* DeVega */,
+				CEC26B6617AD1158000B72B0 /* DeVegaTest */,
 			);
 		};
 /* End PBXProject section */
@@ -201,7 +272,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CEC26B6417AD1158000B72B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CEC26B6517AD1158000B72B0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE7D144B172457B7000F72AF /* Sources */ = {
@@ -218,6 +312,14 @@
 				CE33788B177D8BCE00FAC438 /* FontNameResolver.m in Sources */,
 				CE82148C178046250043A86F /* AttributeListCoctroller.m in Sources */,
 				CE8443E11780AEBE0008CFA7 /* AttributeControllerDelegate.m in Sources */,
+				CEC26B7F17AD42EB000B72B0 /* RtfSyntaxParser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEC26B6217AD1158000B72B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +425,43 @@
 			};
 			name = Release;
 		};
+		CEC26B7B17AD1159000B72B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DeVegaTest/DeVegaTest-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "DeVegaTest/DeVegaTest-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		CEC26B7C17AD1159000B72B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DeVegaTest/DeVegaTest-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "DeVegaTest/DeVegaTest-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -343,6 +482,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		CEC26B7A17AD1159000B72B0 /* Build configuration list for PBXNativeTarget "DeVegaTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEC26B7B17AD1159000B72B0 /* Debug */,
+				CEC26B7C17AD1159000B72B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

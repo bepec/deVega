@@ -11,6 +11,9 @@
 #import "DocumentCell.h"
 
 @interface DocumentViewController ()
+{
+    Document *_currentDocument;
+}
 
 @end
 
@@ -144,9 +147,22 @@
     [[[UIAlertView alloc] initWithTitle:@"deVega" message:@"Close" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
 
+- (NSString *)getNewFilename
+{
+    NSString *filename;
+    
+    return filename;
+}
+
 - (void)editorViewControllerDidSave:(EditorViewController *)controller
 {
     [[[UIAlertView alloc] initWithTitle:@"deVega" message:@"Save" delegate:nil cancelButtonTitle:@"OK"otherButtonTitles:nil] show];
+    
+    if (_currentDocument == nil) {
+        _currentDocument = [Document new];
+        _currentDocument.title = [self getNewFilename];
+    }
+    
 }
 
 @end
