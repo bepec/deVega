@@ -28,6 +28,9 @@
 		CEC26B6917AD1158000B72B0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC26B6817AD1158000B72B0 /* SenTestingKit.framework */; };
 		CEC26B6B17AD1158000B72B0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC26B6A17AD1158000B72B0 /* Cocoa.framework */; };
 		CEC26B7F17AD42EB000B72B0 /* RtfSyntaxParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC26B7E17AD42EB000B72B0 /* RtfSyntaxParser.m */; };
+		CEC26B8D17AD4BFF000B72B0 /* DeVegaTest-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEC26B8517AD4BFF000B72B0 /* DeVegaTest-Info.plist */; };
+		CEC26B8F17AD4BFF000B72B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEC26B8917AD4BFF000B72B0 /* InfoPlist.strings */; };
+		CEC26B9117AD8128000B72B0 /* RtfSyntaxParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC26B7E17AD42EB000B72B0 /* RtfSyntaxParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +72,11 @@
 		CEC26B6F17AD1158000B72B0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CEC26B7D17AD42EB000B72B0 /* RtfSyntaxParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RtfSyntaxParser.h; path = Rtf/RtfSyntaxParser.h; sourceTree = "<group>"; };
 		CEC26B7E17AD42EB000B72B0 /* RtfSyntaxParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RtfSyntaxParser.m; path = Rtf/RtfSyntaxParser.m; sourceTree = "<group>"; };
+		CEC26B8517AD4BFF000B72B0 /* DeVegaTest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DeVegaTest-Info.plist"; sourceTree = "<group>"; };
+		CEC26B8617AD4BFF000B72B0 /* DeVegaTest-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DeVegaTest-Prefix.pch"; sourceTree = "<group>"; };
+		CEC26B8A17AD4BFF000B72B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CEC26B8B17AD4BFF000B72B0 /* RtfSyntaxParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RtfSyntaxParserTest.h; sourceTree = "<group>"; };
+		CEC26B8C17AD4BFF000B72B0 /* RtfSyntaxParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RtfSyntaxParserTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,7 @@
 		CE7D1446172457B7000F72AF = {
 			isa = PBXGroup;
 			children = (
+				CEC26B8417AD4BFF000B72B0 /* DeVegaTest */,
 				CE7D1458172457B7000F72AF /* DeVega */,
 				CE7D1451172457B7000F72AF /* Frameworks */,
 				CE7D1450172457B7000F72AF /* Products */,
@@ -194,6 +203,18 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
+		CEC26B8417AD4BFF000B72B0 /* DeVegaTest */ = {
+			isa = PBXGroup;
+			children = (
+				CEC26B8517AD4BFF000B72B0 /* DeVegaTest-Info.plist */,
+				CEC26B8617AD4BFF000B72B0 /* DeVegaTest-Prefix.pch */,
+				CEC26B8917AD4BFF000B72B0 /* InfoPlist.strings */,
+				CEC26B8B17AD4BFF000B72B0 /* RtfSyntaxParserTest.h */,
+				CEC26B8C17AD4BFF000B72B0 /* RtfSyntaxParserTest.m */,
+			);
+			path = DeVegaTest;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -269,6 +290,8 @@
 				CE7D1467172457B7000F72AF /* Default@2x.png in Resources */,
 				CE7D1469172457B7000F72AF /* Default-568h@2x.png in Resources */,
 				CE7D146C172457B7000F72AF /* MainStoryboard.storyboard in Resources */,
+				CEC26B8D17AD4BFF000B72B0 /* DeVegaTest-Info.plist in Resources */,
+				CEC26B8F17AD4BFF000B72B0 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEC26B9117AD8128000B72B0 /* RtfSyntaxParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +364,14 @@
 				CE7D146B172457B7000F72AF /* en */,
 			);
 			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		CEC26B8917AD4BFF000B72B0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEC26B8A17AD4BFF000B72B0 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
