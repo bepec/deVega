@@ -52,4 +52,19 @@
     STAssertEqualObjects(result.string, @"first line\u2028second line", @"Bad output");
 }
 
+- (void)testRtfWithBold
+{
+    AttributedStringBuilder *converter = [AttributedStringBuilder new];
+    NSString* input = @"{\\rtf1 regular \\b bold \\b0 regular}";
+    NSAttributedString* result = [converter feed:[input dataUsingEncoding:NSASCIIStringEncoding]];
+    STAssertEqualObjects(result.string, @"regular bold regular", @"Bad output");
+    NSFont* font = (NSFont*)[[result attributesAtIndex:5 effectiveRange:nil] objectForKey:NSFontAttributeName];
+    STAssertEqualObjects(font.fontName, @"Helvetica", @"Bad font");
+    font = (NSFont*)[[result attributesAtIndex:10 effectiveRange:nil] objectForKey:NSFontAttributeName];
+    STAssertEqualObjects(font.fontName, @"Helvetica-Bold", @"Bad font");
+    font = (NSFont*)[[result attributesAtIndex:15 effectiveRange:nil] objectForKey:NSFontAttributeName];
+    STAssertEqualObjects(font.fontName, @"Helvetica", @"Bad font");
+}
+
+
 @end

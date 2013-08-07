@@ -8,6 +8,7 @@
 
 
 #import "AttributedStringBuilder.h"
+#import "FontNameResolver.h"
 
 /*
  struct ControlWord {
@@ -56,6 +57,7 @@
     if (self = [super init]) {
         output = [NSMutableAttributedString new];
         attributes = [NSMutableDictionary new];
+        [attributes setObject:[NSFont fontWithName:@"Helvetica" size:12] forKey:NSFontAttributeName];
         groupStack = [NSMutableArray new];
         parser = [RtfSyntaxParser new];
         parser.delegate = self;
@@ -81,6 +83,20 @@
     else if ([word compare:@"line"] == NSOrderedSame) {
         [[output mutableString] appendString:[NSString stringWithCharacters:&NSLineSeparatorCharacter length:1]];
     }
+    else if ([word compare:@"b"] == NSOrderedSame) {
+        NSFont *font = (NSFont *)[attributes objectForKey:NSFontAttributeName];
+        if (![FontNameResolver isBold:font.fontName]) {
+            NSFont *newFont = [NSFont fontWithName:[FontNameResolver setBold:YES from:font.fontName] size:font.pointSize];
+            [attributes setObject:newFont forKey:NSFontAttributeName];
+        }
+    }
+    else if ([word compare:@"b0"] == NSOrderedSame) {
+        NSFont *font = (NSFont *)[attributes objectForKey:NSFontAttributeName];
+        if ([FontNameResolver isBold:font.fontName]) {
+            NSFont *newFont = [NSFont fontWithName:[FontNameResolver setBold:NO from:font.fontName] size:font.pointSize];
+            [attributes setObject:newFont forKey:NSFontAttributeName];
+        }
+    }
 }
 
 - (void)groupStart
@@ -96,7 +112,8 @@
 
 - (void)text:(NSString*)text
 {
-    [[output mutableString] appendString:text];
+    NSAttributedString *stringToAppend = [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    [output appendAttributedString:stringToAppend];
 }
 
 - (void)error
