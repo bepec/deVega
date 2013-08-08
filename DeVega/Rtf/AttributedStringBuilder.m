@@ -8,7 +8,6 @@
 
 
 #import "AttributedStringBuilder.h"
-#import "FontNameResolver.h"
 
 /*
  struct ControlWord {
@@ -45,7 +44,10 @@
     NSMutableAttributedString* output;
     RtfSyntaxParser* parser;
     NSMutableArray* groupStack;
-    NSMutableDictionary* attributes;
+    NSMutableDictionary* _attributes;
+    
+    AttributeController *_boldfaceController;
+    NSMutableArray *_subscribers;
 }
 @end
 
@@ -56,11 +58,17 @@
 {
     if (self = [super init]) {
         output = [NSMutableAttributedString new];
-        attributes = [NSMutableDictionary new];
-        [attributes setObject:[NSFont fontWithName:@"Helvetica" size:12] forKey:NSFontAttributeName];
+        _attributes = [NSMutableDictionary new];
+        [_attributes setObject:[NSFont fontWithName:@"Helvetica" size:12] forKey:NSFontAttributeName];
+        
         groupStack = [NSMutableArray new];
+        _subscribers = [NSMutableArray new];
+
         parser = [RtfSyntaxParser new];
         parser.delegate = self;
+
+        _boldfaceController = [AttributeController createBoldfaceController];
+        _boldfaceController.attributeListController = self;
     }
     return self;
 }
@@ -84,17 +92,13 @@
         [[output mutableString] appendString:[NSString stringWithCharacters:&NSLineSeparatorCharacter length:1]];
     }
     else if ([word compare:@"b"] == NSOrderedSame) {
-        NSFont *font = (NSFont *)[attributes objectForKey:NSFontAttributeName];
-        if (![FontNameResolver isBold:font.fontName]) {
-            NSFont *newFont = [NSFont fontWithName:[FontNameResolver setBold:YES from:font.fontName] size:font.pointSize];
-            [attributes setObject:newFont forKey:NSFontAttributeName];
+        if (![_boldfaceController state]) {
+            _boldfaceController.attributeState = YES;
         }
     }
     else if ([word compare:@"b0"] == NSOrderedSame) {
-        NSFont *font = (NSFont *)[attributes objectForKey:NSFontAttributeName];
-        if ([FontNameResolver isBold:font.fontName]) {
-            NSFont *newFont = [NSFont fontWithName:[FontNameResolver setBold:NO from:font.fontName] size:font.pointSize];
-            [attributes setObject:newFont forKey:NSFontAttributeName];
+        if ([_boldfaceController state]) {
+            _boldfaceController.attributeState = NO;
         }
     }
 }
@@ -112,7 +116,7 @@
 
 - (void)text:(NSString*)text
 {
-    NSAttributedString *stringToAppend = [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    NSAttributedString *stringToAppend = [[NSAttributedString alloc] initWithString:text attributes:_attributes];
     [output appendAttributedString:stringToAppend];
 }
 
@@ -120,5 +124,31 @@
 {
     
 }
+
+// AttributeStringController methods
+
+-(void)notifySubscribers
+{
+    for (id<AttributeListSubscriber>subscriber in _subscribers) {
+        [subscriber attributesChanged:_attributes];
+    }
+}
+
+-(void)subscribe:(id<AttributeListSubscriber>)subscriber
+{
+    [_subscribers addObject:subscriber];
+}
+
+-(void)setAttributes:(NSDictionary*)attributes
+{
+    _attributes = [NSMutableDictionary dictionaryWithDictionary:attributes];
+    [self notifySubscribers];
+}
+
+-(NSDictionary*)attributes
+{
+    return _attributes;
+}
+
 
 @end

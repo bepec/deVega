@@ -9,6 +9,11 @@
 #import "AttributeController.h"
 #import "FontNameResolver.h"
 
+#import <TargetConditionals.h>
+#ifdef TARGET_OS_MAC
+typedef NSFont UIFont;
+#endif
+
 
 @interface AttributeController ()
 {

@@ -8,12 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol AttributeControllerDelegate
-
--(void)update:(BOOL)state;
-
-@end
-
 @interface AttributeControllerDelegateFactory : NSObject
 
 +(id<AttributeControllerDelegate>)delegateWithButton:(UIButton*)button andBlock:(void(^)())eventBlock;

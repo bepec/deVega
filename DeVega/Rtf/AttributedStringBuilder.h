@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "RtfSyntaxParser.h"
+#import "AttributeController.h"
 
-@interface AttributedStringBuilder : NSObject<RtfSyntaxParserDelegate>
+@interface AttributedStringBuilder : NSObject<RtfSyntaxParserDelegate, AttributeListController>
 
 - (id)init;
 - (NSAttributedString *)feed:(NSData*)data;
@@ -20,5 +21,12 @@
 - (void)groupEnd;
 - (void)text:(NSString*)text;
 - (void)error;
+
+// AttributeListController methods
+- (void)notifySubscribers;
+- (void)subscribe:(id<AttributeListSubscriber>)subscriber;
+- (void)setAttributes:(NSDictionary*)attributes;
+- (NSDictionary*)attributes;
+
 
 @end

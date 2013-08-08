@@ -7,21 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@protocol AttributeListSubscriber
-
--(void)attributesChanged:(NSDictionary*)attributes;
-
-@end
-
-@protocol AttributeListController
-
--(void)notifySubscribers;
--(void)subscribe:(id<AttributeListSubscriber>)subscriber;
--(void)setAttributes:(NSDictionary*)attributes;
--(NSDictionary*)attributes;
-
-@end
+#import "AttributeController.h"
 
 @interface AttributeListControllerTextView : NSObject
 
