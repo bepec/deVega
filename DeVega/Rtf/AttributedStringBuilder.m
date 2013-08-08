@@ -9,43 +9,12 @@
 
 #import "AttributedStringBuilder.h"
 
-/*
- struct ControlWord {
- size_t position;
- char name[256];
- };
- */
-@interface ControlWord : NSObject
-{
-@public
-    size_t position;
-    NSString *type;
-}
-+ (ControlWord*)getControlWord:(NSString*)word inPosition:(NSUInteger)position;
-@end
-
-@implementation ControlWord
-
-+ (ControlWord*)getControlWord:(NSString*)word inPosition:(NSUInteger)position
-{
-    ControlWord* cw = [ControlWord new];
-    if (cw != nil) {
-        cw->type = [NSString stringWithString:word];
-        cw->position = position;
-    }
-    return [ControlWord new];
-}
-
-@end
-
-
 @interface AttributedStringBuilder()
 {
-    NSMutableAttributedString* output;
-    RtfSyntaxParser* parser;
-    NSMutableArray* groupStack;
-    NSMutableDictionary* _attributes;
-    
+    RtfSyntaxParser *_parser;
+    NSMutableAttributedString *_output;
+    NSMutableArray *_attributesStack;
+    NSMutableDictionary *_defaultAttributes;
     AttributeController *_boldfaceController;
     NSMutableArray *_subscribers;
 }
@@ -57,15 +26,16 @@
 - (id)init
 {
     if (self = [super init]) {
-        output = [NSMutableAttributedString new];
-        _attributes = [NSMutableDictionary new];
-        [_attributes setObject:[NSFont fontWithName:@"Helvetica" size:12] forKey:NSFontAttributeName];
+        _output = [NSMutableAttributedString new];
         
-        groupStack = [NSMutableArray new];
+        _defaultAttributes = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica" size:12], NSFontAttributeName, nil];
+        
+        _attributesStack = [NSMutableArray new];
+
         _subscribers = [NSMutableArray new];
 
-        parser = [RtfSyntaxParser new];
-        parser.delegate = self;
+        _parser = [RtfSyntaxParser new];
+        _parser.delegate = self;
 
         _boldfaceController = [AttributeController createBoldfaceController];
         _boldfaceController.attributeListController = self;
@@ -75,8 +45,8 @@
 
 - (NSAttributedString *)feed:(NSData*)data
 {
-    parser.inputStream = [NSInputStream inputStreamWithData: data];
-    return output;
+    _parser.inputStream = [NSInputStream inputStreamWithData: data];
+    return _output;
 }
 
 // RtfDecoderDelegate methods
@@ -86,10 +56,10 @@
     const unichar NSParagraphSeparatorCharacter = 0x2029;
     
     if ([word compare:@"par"] == NSOrderedSame) {
-        [[output mutableString] appendString:[NSString stringWithCharacters:&NSParagraphSeparatorCharacter length:1]];
+        [[_output mutableString] appendString:[NSString stringWithCharacters:&NSParagraphSeparatorCharacter length:1]];
     }
     else if ([word compare:@"line"] == NSOrderedSame) {
-        [[output mutableString] appendString:[NSString stringWithCharacters:&NSLineSeparatorCharacter length:1]];
+        [[_output mutableString] appendString:[NSString stringWithCharacters:&NSLineSeparatorCharacter length:1]];
     }
     else if ([word compare:@"b"] == NSOrderedSame) {
         if (![_boldfaceController state]) {
@@ -105,19 +75,21 @@
 
 - (void)groupStart
 {
-    [groupStack addObject:[NSMutableArray new]];
+    [_attributesStack addObject:[NSMutableDictionary dictionaryWithDictionary:self.attributes]];
 }
 
 - (void)groupEnd
 {
-    // process all opened control words
-    [groupStack removeLastObject];
+    assert(_attributesStack.count > 0);
+    
+    [_attributesStack removeLastObject];
+    [self notifySubscribers];
 }
 
 - (void)text:(NSString*)text
 {
-    NSAttributedString *stringToAppend = [[NSAttributedString alloc] initWithString:text attributes:_attributes];
-    [output appendAttributedString:stringToAppend];
+    NSAttributedString *stringToAppend = [[NSAttributedString alloc] initWithString:text attributes:self.attributes];
+    [_output appendAttributedString:stringToAppend];
 }
 
 - (void)error
@@ -130,7 +102,7 @@
 -(void)notifySubscribers
 {
     for (id<AttributeListSubscriber>subscriber in _subscribers) {
-        [subscriber attributesChanged:_attributes];
+        [subscriber attributesChanged:self.attributes];
     }
 }
 
@@ -141,13 +113,16 @@
 
 -(void)setAttributes:(NSDictionary*)attributes
 {
-    _attributes = [NSMutableDictionary dictionaryWithDictionary:attributes];
+    assert(_attributesStack.count > 0);
+    
+    [_attributesStack removeLastObject];
+    [_attributesStack addObject:[NSMutableDictionary dictionaryWithDictionary:attributes]];
     [self notifySubscribers];
 }
 
 -(NSDictionary*)attributes
 {
-    return _attributes;
+    return _attributesStack.count == 0 ? _defaultAttributes : _attributesStack.lastObject;
 }
 
 
