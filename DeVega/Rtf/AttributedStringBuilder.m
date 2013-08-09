@@ -14,10 +14,13 @@
     RtfSyntaxParser *_parser;
     NSMutableAttributedString *_output;
     NSMutableArray *_attributesStack;
-    NSMutableDictionary *_defaultAttributes;
+    NSDictionary *_defaultAttributes;
     AttributeController *_boldfaceController;
     NSMutableArray *_subscribers;
+    NSDictionary *_controlWordHandlers;
 }
+- (void)initControlWordHandlers;
+- (void)appendString:(NSString*)string;
 @end
 
 
@@ -28,7 +31,7 @@
     if (self = [super init]) {
         _output = [NSMutableAttributedString new];
         
-        _defaultAttributes = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica" size:12], NSFontAttributeName, nil];
+        _defaultAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica" size:12], NSFontAttributeName, nil];
         
         _attributesStack = [NSMutableArray new];
 
@@ -39,6 +42,8 @@
 
         _boldfaceController = [AttributeController createBoldfaceController];
         _boldfaceController.attributeListController = self;
+        
+        [self initControlWordHandlers];
     }
     return self;
 }
@@ -52,25 +57,13 @@
 // RtfDecoderDelegate methods
 - (void)controlWord:(NSString*)word
 {
-    const unichar NSLineSeparatorCharacter = 0x2028;
-    const unichar NSParagraphSeparatorCharacter = 0x2029;
+    assert(word.length > 0);
     
-    if ([word compare:@"par"] == NSOrderedSame) {
-        [[_output mutableString] appendString:[NSString stringWithCharacters:&NSParagraphSeparatorCharacter length:1]];
-    }
-    else if ([word compare:@"line"] == NSOrderedSame) {
-        [[_output mutableString] appendString:[NSString stringWithCharacters:&NSLineSeparatorCharacter length:1]];
-    }
-    else if ([word compare:@"b"] == NSOrderedSame) {
-        if (![_boldfaceController state]) {
-            _boldfaceController.attributeState = YES;
-        }
-    }
-    else if ([word compare:@"b0"] == NSOrderedSame) {
-        if ([_boldfaceController state]) {
-            _boldfaceController.attributeState = NO;
-        }
-    }
+    void (^handler)() = [_controlWordHandlers objectForKey:word];
+    if (handler == nil)
+        return;
+
+    handler();
 }
 
 - (void)groupStart
@@ -88,8 +81,7 @@
 
 - (void)text:(NSString*)text
 {
-    NSAttributedString *stringToAppend = [[NSAttributedString alloc] initWithString:text attributes:self.attributes];
-    [_output appendAttributedString:stringToAppend];
+    [self appendString:text];
 }
 
 - (void)error
@@ -125,5 +117,29 @@
     return _attributesStack.count == 0 ? _defaultAttributes : _attributesStack.lastObject;
 }
 
+- (void)initControlWordHandlers
+{
+    assert(_controlWordHandlers == nil);
+    
+    static const unichar NSLineSeparatorCharacter = 0x2028;
+    static const unichar NSParagraphSeparatorCharacter = 0x2029;
+    
+    void (^par)()  = ^{ [self appendString:[NSString stringWithCharacters:&NSParagraphSeparatorCharacter length:1]]; };
+    void (^line)() = ^{ [self appendString:[NSString stringWithCharacters:&NSLineSeparatorCharacter length:1]]; };
+    void (^b)()    = ^{ _boldfaceController.attributeState = YES; };
+    void (^b0)()   = ^{ _boldfaceController.attributeState = NO; };
+
+    _controlWordHandlers = [NSDictionary dictionaryWithObjectsAndKeys: par,  @"par",
+                                                                       line, @"line",
+                                                                       b,    @"b",
+                                                                       b0,   @"b0",
+                                                                       nil];
+}
+
+- (void)appendString:(NSString *)string
+{
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:self.attributes];
+    [_output appendAttributedString:attributedString];
+}
 
 @end
