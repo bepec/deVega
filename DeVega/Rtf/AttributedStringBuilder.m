@@ -16,6 +16,7 @@
     NSMutableArray *_attributesStack;
     NSDictionary *_defaultAttributes;
     AttributeController *_boldfaceController;
+    AttributeController *_italicsController;
     NSMutableArray *_subscribers;
     NSDictionary *_controlWordHandlers;
 }
@@ -42,6 +43,9 @@
 
         _boldfaceController = [AttributeController createBoldfaceController];
         _boldfaceController.attributeListController = self;
+        
+        _italicsController = [AttributeController createItalicsController];
+        _italicsController.attributeListController = self;
         
         [self initControlWordHandlers];
     }
@@ -128,11 +132,15 @@
     void (^line)() = ^{ [self appendString:[NSString stringWithCharacters:&NSLineSeparatorCharacter length:1]]; };
     void (^b)()    = ^{ _boldfaceController.attributeState = YES; };
     void (^b0)()   = ^{ _boldfaceController.attributeState = NO; };
+    void (^i)()    = ^{ _italicsController.attributeState = YES; };
+    void (^i0)()   = ^{ _italicsController.attributeState = NO; };
 
     _controlWordHandlers = [NSDictionary dictionaryWithObjectsAndKeys: par,  @"par",
                                                                        line, @"line",
                                                                        b,    @"b",
                                                                        b0,   @"b0",
+                                                                       i,    @"i",
+                                                                       i0,   @"i0",
                                                                        nil];
 }
 
