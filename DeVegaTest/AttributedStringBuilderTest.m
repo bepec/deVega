@@ -115,4 +115,14 @@
     STAssertEqualObjects(font.fontName, @"Helvetica", @"Bad font");
 }
 
+- (void)testRtfIgnoreHeaderGroups
+{
+    AttributedStringBuilder *converter = [AttributedStringBuilder new];
+    
+    NSString* input = @"{\\rtf1\\ansi\\ansicpg1251\\deff0\\deflang1058{\\fonttbl{\\f0\\fnil\\fcharset0 Calibri;}}\r\n{\\*\\generator Msftedit 5.41.21.2510;}\\viewkind4\\uc1\\pard\\sa200\\sl276\\slmult1\\lang9\\f0\\fs22 Plain text\\par\r\n}";
+
+    NSAttributedString* result = [converter feed:[input dataUsingEncoding:NSASCIIStringEncoding]];
+    STAssertEqualObjects(result.string, @"Plain text", @"Bad output");
+}
+
 @end

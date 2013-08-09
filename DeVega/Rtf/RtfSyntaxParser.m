@@ -160,6 +160,16 @@ BOOL isControlSymbol(char symbol)
                     // no more control symbols
                 }
             }
+            else if (currentSymbol == '\r' || currentSymbol == '\n') {
+                if (i > stateStartPosition) {
+                    NSRange textRange = { stateStartPosition, i - stateStartPosition};
+                    NSData * data = [buffer subdataWithRange:textRange];
+                    NSString* text = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+                    [delegate text:text];
+                }
+                stateStartPosition = i;
+                state = StateReset;
+            }
         }
         
         else {

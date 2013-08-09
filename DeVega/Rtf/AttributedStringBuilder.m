@@ -19,6 +19,8 @@
     AttributeController *_italicsController;
     NSMutableArray *_subscribers;
     NSDictionary *_controlWordHandlers;
+    int _skipGroupCounter;
+    NSSet *_skipGroupWords;
 }
 - (void)initControlWordHandlers;
 - (void)appendString:(NSString*)string;
@@ -47,6 +49,9 @@
         _italicsController = [AttributeController createItalicsController];
         _italicsController.attributeListController = self;
         
+        _skipGroupCounter = 0;
+        _skipGroupWords = [NSSet setWithObjects:@"*", @"generator", @"fonttbl", @"colortbl", @"styletbl", nil];
+        
         [self initControlWordHandlers];
     }
     return self;
@@ -63,6 +68,14 @@
 {
     assert(word.length > 0);
     
+    if (_skipGroupCounter > 0)
+        return;
+    
+    if ([_skipGroupWords containsObject:word]) {
+        _skipGroupCounter++;
+        return;
+    }
+    
     void (^handler)() = [_controlWordHandlers objectForKey:word];
     if (handler == nil)
         return;
@@ -72,11 +85,21 @@
 
 - (void)groupStart
 {
+    if (_skipGroupCounter) {
+        _skipGroupCounter++;
+        return;
+    }
+    
     [_attributesStack addObject:[NSMutableDictionary dictionaryWithDictionary:self.attributes]];
 }
 
 - (void)groupEnd
 {
+    if (_skipGroupCounter) {
+        _skipGroupCounter--;
+        return;
+    }
+    
     assert(_attributesStack.count > 0);
     
     [_attributesStack removeLastObject];
@@ -85,6 +108,8 @@
 
 - (void)text:(NSString*)text
 {
+    if (_skipGroupCounter) return;
+    
     [self appendString:text];
 }
 
