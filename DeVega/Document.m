@@ -13,5 +13,17 @@
 @synthesize title;
 @synthesize description;
 @synthesize modified;
+@synthesize url;
+
++ (Document*)documentWithURL:(NSURL*)url
+{
+    Document *document = [Document new];
+    document.url = url;
+    document.title = [url lastPathComponent];
+    NSDate *modified = [NSDate new];
+    [url getResourceValue:&modified forKey:NSURLContentModificationDateKey error:nil];
+    document.modified = modified;
+    return document;
+}
 
 @end

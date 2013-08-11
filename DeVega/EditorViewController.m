@@ -8,6 +8,8 @@
 
 #import "EditorViewController.h"
 #import "AttributeController.h"
+#import "AttributeControllerDelegate.h"
+#import "AttributeListController.h"
 
 
 @interface EditorViewController ()

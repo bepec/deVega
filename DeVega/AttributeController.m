@@ -11,7 +11,7 @@
 
 #import <TargetConditionals.h>
 #ifdef TARGET_OS_MAC
-typedef NSFont UIFont;
+//typedef NSFont UIFont;
 #endif
 
 

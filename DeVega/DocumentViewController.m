@@ -14,7 +14,6 @@
 {
     Document *_currentDocument;
 }
-
 @end
 
 

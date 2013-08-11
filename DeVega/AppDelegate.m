@@ -10,7 +10,6 @@
 #import "Document.h"
 #import "DocumentViewController.h"
 
-
 @implementation AppDelegate {
     NSMutableArray *documents;
 }
@@ -18,20 +17,21 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *documentDirectories = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
     
     documents = [NSMutableArray arrayWithCapacity: 20];
-    
-    Document *document = [Document new];
-    document.title = @"Diary";
-    document.description = @"The story of my life";
-    document.modified = [NSDate dateWithTimeIntervalSinceNow: 0];
-    [documents addObject: document];
-    
-    document = [Document new];
-    document.title = @"Vengeance of the limb";
-    document.description = @"A scary novel";
-    document.modified = [NSDate dateWithTimeIntervalSinceReferenceDate: 0];
-    [documents addObject: document];
+
+    for (NSURL *directory in documentDirectories) {
+        NSDirectoryEnumerator *enumerator = [fileManager enumeratorAtURL:directory
+                                              includingPropertiesForKeys:@[NSURLIsDirectoryKey, NSURLNameKey, NSURLContentModificationDateKey]
+                                                                 options:NSDirectoryEnumerationSkipsHiddenFiles
+                                                            errorHandler:nil];
+        for (NSURL *url in enumerator) {
+            if ([[url pathExtension] isEqualToString:@"rtf"])
+                [documents addObject:[Document documentWithURL:url]];
+        }
+    }
     
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     DocumentViewController *documentController = (DocumentViewController *)navigationController.topViewController;
