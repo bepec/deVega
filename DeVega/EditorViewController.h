@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Document.h"
 
 @class EditorViewController;
 
@@ -30,5 +31,6 @@
 -(IBAction)save:(id)sender;
 
 -(void)textViewDidChangeSelection:(UITextView *)textView;
+-(void)openDocument:(Document*)document;
 
 @end

@@ -97,11 +97,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DocumentCell" id="2Yw-GK-PgP" customClass="DocumentCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DocumentCell" id="2Yw-GK-PgP" customClass="DocumentCell">
                                 <rect key="frame" x="0.0" y="22" width="768" height="52"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="768" height="51"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="748" height="51"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="left" text="textLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4b-kh-j7u">
@@ -146,6 +146,7 @@
                                     <outlet property="descriptionLabel" destination="cag-7E-KGR" id="Hro-RE-Ize"/>
                                     <outlet property="modifiedDateLabel" destination="eEt-HB-jJ3" id="ELl-PC-w4U"/>
                                     <outlet property="titleLabel" destination="V4b-kh-j7u" id="Pas-V6-FZ1"/>
+                                    <segue destination="9Nv-Ip-5l0" kind="push" identifier="Open" id="reK-nR-Kwj"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -190,4 +191,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="reK-nR-Kwj"/>
+    </inferredMetricsTieBreakers>
 </document>

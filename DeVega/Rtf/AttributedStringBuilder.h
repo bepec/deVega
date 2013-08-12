@@ -13,7 +13,9 @@
 @interface AttributedStringBuilder : NSObject<RtfSyntaxParserDelegate, AttributeListController>
 
 - (id)init;
+- (id)initWithParser:(RtfSyntaxParser*)parser andAttributes:(NSDictionary*)defaultAttributes;
 - (NSAttributedString *)feed:(NSData*)data;
+- (NSAttributedString *)output;
 
 // RtfDecoderDelegate methods
 - (void)controlWord:(NSString*)word;

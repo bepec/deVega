@@ -10,6 +10,7 @@
 #import "AttributeController.h"
 #import "AttributeControllerDelegate.h"
 #import "AttributeListController.h"
+#import "AttributedStringBuilder.h"
 
 
 @interface EditorViewController ()
@@ -54,6 +55,15 @@
     italicsController.delegate = [AttributeControllerDelegateFactory delegateWithButton:toggleItalicsButton andBlock:^{ [italicsController setAttributeState:!italicsController.state]; }];
     
     self->attributeControllers = [NSSet setWithObjects:boldfaceController, italicsController, nil];
+}
+
+-(void)openDocument:(Document*)document
+{
+    RtfSyntaxParser *parser = [RtfSyntaxParser new];
+    NSDictionary *attributes = [textView.attributedText attributesAtIndex:0 effectiveRange:nil];
+    AttributedStringBuilder *builder = [[AttributedStringBuilder alloc] initWithParser:parser andAttributes:attributes];
+    parser.inputStream = [NSInputStream inputStreamWithURL:document.url];
+    textView.attributedText = builder.output;
 }
 
 - (void)didReceiveMemoryWarning

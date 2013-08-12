@@ -10,9 +10,9 @@
 #import "Document.h"
 #import "DocumentCell.h"
 
-@interface DocumentViewController ()
+@interface DocumentViewController()
 {
-    Document *_currentDocument;
+    EditorViewController *_editorViewController;
 }
 @end
 
@@ -49,11 +49,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"New"])
-    {
-        UINavigationController *navigationController = segue.destinationViewController;
-        EditorViewController *editorViewController = [[navigationController viewControllers] objectAtIndex:0];
-        editorViewController.delegate = self;
+    if ([segue.identifier isEqualToString:@"Open"]) {
+        _editorViewController = segue.destinationViewController;
+        _editorViewController.delegate = self;
     }
 }
 
@@ -127,15 +125,16 @@
 
 #pragma mark - Table view delegate
 
+//- (void)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+////    _currentDocument = nil;//[documents objectAtIndex:indexPath.row];
+//}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    assert(_editorViewController != nil);
+    _currentDocument = [documents objectAtIndex:indexPath.row];
+    [_editorViewController openDocument:_currentDocument];
 }
 
 #pragma mark - Editor view controller delegate

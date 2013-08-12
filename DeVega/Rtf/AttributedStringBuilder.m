@@ -31,18 +31,20 @@
 
 - (id)init
 {
+    NSDictionary *defaultAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Helvetica" size:12], NSFontAttributeName, nil];
+    RtfSyntaxParser *parser = [RtfSyntaxParser new];
+    return [self initWithParser:parser andAttributes:defaultAttributes];
+}
+
+- (id)initWithParser:(RtfSyntaxParser*)parser andAttributes:(NSDictionary*)defaultAttributes
+{
     if (self = [super init]) {
         _output = [NSMutableAttributedString new];
         
-        _defaultAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont fontWithName:@"Helvetica" size:12], NSFontAttributeName, nil];
-        
         _attributesStack = [NSMutableArray new];
-
+        
         _subscribers = [NSMutableArray new];
-
-        _parser = [RtfSyntaxParser new];
-        _parser.delegate = self;
-
+        
         _boldfaceController = [AttributeController createBoldfaceController];
         _boldfaceController.attributeListController = self;
         
@@ -52,6 +54,10 @@
         _skipGroupCounter = 0;
         _skipGroupWords = [NSSet setWithObjects:@"*", @"generator", @"fonttbl", @"colortbl", @"styletbl", nil];
         
+        _defaultAttributes = defaultAttributes;
+        _parser = parser;
+        _parser.delegate = self;
+
         [self initControlWordHandlers];
     }
     return self;
@@ -60,6 +66,11 @@
 - (NSAttributedString *)feed:(NSData*)data
 {
     _parser.inputStream = [NSInputStream inputStreamWithData: data];
+    return _output;
+}
+
+- (NSAttributedString *)output
+{
     return _output;
 }
 

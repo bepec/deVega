@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE337888177D784300FAC438 /* AttributeController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE337887177D784300FAC438 /* AttributeController.m */; };
 		CE33788B177D8BCE00FAC438 /* FontNameResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = CE33788A177D8BCD00FAC438 /* FontNameResolver.m */; };
+		CE75955B17B826E9003E3B83 /* AttributedStringBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC26B9417AD8312000B72B0 /* AttributedStringBuilder.m */; };
 		CE7601F417B2BD8600362FB3 /* FontNameResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = CE33788A177D8BCD00FAC438 /* FontNameResolver.m */; };
 		CE7601F517B3590300362FB3 /* AttributeController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE337887177D784300FAC438 /* AttributeController.m */; };
 		CE7D1453172457B7000F72AF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7D1452172457B7000F72AF /* UIKit.framework */; };
@@ -346,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE75955B17B826E9003E3B83 /* AttributedStringBuilder.m in Sources */,
 				CE7D145F172457B7000F72AF /* main.m in Sources */,
 				CE7D1463172457B7000F72AF /* AppDelegate.m in Sources */,
 				CE7E86BD173D532100A89241 /* DocumentViewController.m in Sources */,
