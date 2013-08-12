@@ -84,17 +84,16 @@ BOOL isControlSymbol(char symbol)
         }
         
         if (state == StateEscape) {
+            state = StateReset;
             if (isControlSymbol(currentSymbol)) {
                 [delegate text:[NSString stringWithCharacters:&currentSymbol length:1]];
-                state = StateReset;
             }
             else if ([[NSCharacterSet lowercaseLetterCharacterSet] characterIsMember:currentSymbol]) {
                 state = StateControl;
                 stateStartPosition = i;
             }
-            else {
-                // special cases - \* \~ and so on
-                state = StateReset;
+            else if (currentSymbol == '*') {
+                [delegate controlWord:[NSString stringWithCharacters:&currentSymbol length:1]];
             }
         }
         
