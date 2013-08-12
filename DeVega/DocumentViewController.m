@@ -125,16 +125,10 @@
 
 #pragma mark - Table view delegate
 
-//- (void)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-////    _currentDocument = nil;//[documents objectAtIndex:indexPath.row];
-//}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     assert(_editorViewController != nil);
-    _currentDocument = [documents objectAtIndex:indexPath.row];
-    [_editorViewController openDocument:_currentDocument];
+    [_editorViewController openDocument:[documents objectAtIndex:indexPath.row]];
 }
 
 #pragma mark - Editor view controller delegate
@@ -154,13 +148,7 @@
 
 - (void)editorViewControllerDidSave:(EditorViewController *)controller
 {
-    [[[UIAlertView alloc] initWithTitle:@"deVega" message:@"Save" delegate:nil cancelButtonTitle:@"OK"otherButtonTitles:nil] show];
-    
-    if (_currentDocument == nil) {
-        _currentDocument = [Document new];
-        _currentDocument.title = [self getNewFilename];
-    }
-    
+// paste code to save a document
 }
 
 @end
