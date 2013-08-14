@@ -147,6 +147,8 @@
 		CE7D1458172457B7000F72AF /* DeVega */ = {
 			isa = PBXGroup;
 			children = (
+				CE7E082617927E3800D91026 /* AttributeControl */,
+				CE7E8B3C17BB3749000C7FE9 /* Document */,
 				CEC26B3D17AD0E14000B72B0 /* Rtf */,
 				CE7D1461172457B7000F72AF /* AppDelegate.h */,
 				CE7D1462172457B7000F72AF /* AppDelegate.m */,
@@ -156,11 +158,6 @@
 				CE7E86BC173D532100A89241 /* DocumentViewController.m */,
 				CEB487721777528100464803 /* EditorViewController.h */,
 				CEB487731777528100464803 /* EditorViewController.m */,
-				CE7E86BE173D545E00A89241 /* Document.h */,
-				CE7E86BF173D545E00A89241 /* Document.m */,
-				CE81AD29173F6FB100CFF8F7 /* DocumentCell.h */,
-				CE81AD2A173F6FB200CFF8F7 /* DocumentCell.m */,
-				CE7E082617927E3800D91026 /* AttributeControl */,
 			);
 			path = DeVega;
 			sourceTree = "<group>";
@@ -192,6 +189,17 @@
 				CE8443E01780AEBE0008CFA7 /* AttributeControllerDelegate.m */,
 			);
 			name = AttributeControl;
+			sourceTree = "<group>";
+		};
+		CE7E8B3C17BB3749000C7FE9 /* Document */ = {
+			isa = PBXGroup;
+			children = (
+				CE7E86BE173D545E00A89241 /* Document.h */,
+				CE7E86BF173D545E00A89241 /* Document.m */,
+				CE81AD29173F6FB100CFF8F7 /* DocumentCell.h */,
+				CE81AD2A173F6FB200CFF8F7 /* DocumentCell.m */,
+			);
+			name = Document;
 			sourceTree = "<group>";
 		};
 		CEC26B3D17AD0E14000B72B0 /* Rtf */ = {
