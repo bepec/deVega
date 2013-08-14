@@ -24,6 +24,7 @@
 		CE7D146C172457B7000F72AF /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7D146A172457B7000F72AF /* MainStoryboard.storyboard */; };
 		CE7E86BD173D532100A89241 /* DocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E86BC173D532100A89241 /* DocumentViewController.m */; };
 		CE7E86C0173D545E00A89241 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7E86BF173D545E00A89241 /* Document.m */; };
+		CE7E8B4017BC1430000C7FE9 /* new.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CE7E8B3F17BC142F000C7FE9 /* new.rtf */; };
 		CE81AD2B173F6FB200CFF8F7 /* DocumentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE81AD2A173F6FB200CFF8F7 /* DocumentCell.m */; };
 		CE82148C178046250043A86F /* AttributeListCoctroller.m in Sources */ = {isa = PBXBuildFile; fileRef = CE82148B178046250043A86F /* AttributeListCoctroller.m */; };
 		CE8443E11780AEBE0008CFA7 /* AttributeControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8443E01780AEBE0008CFA7 /* AttributeControllerDelegate.m */; };
@@ -62,6 +63,7 @@
 		CE7E86BC173D532100A89241 /* DocumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentViewController.m; sourceTree = "<group>"; };
 		CE7E86BE173D545E00A89241 /* Document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
 		CE7E86BF173D545E00A89241 /* Document.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
+		CE7E8B3F17BC142F000C7FE9 /* new.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = new.rtf; sourceTree = "<group>"; };
 		CE81AD29173F6FB100CFF8F7 /* DocumentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentCell.h; sourceTree = "<group>"; };
 		CE81AD2A173F6FB200CFF8F7 /* DocumentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentCell.m; sourceTree = "<group>"; };
 		CE82148A178046250043A86F /* AttributeListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeListController.h; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		CE7D1446172457B7000F72AF = {
 			isa = PBXGroup;
 			children = (
+				CE7E8B3F17BC142F000C7FE9 /* new.rtf */,
 				CEC26B8417AD4BFF000B72B0 /* DeVegaTest */,
 				CE7D1458172457B7000F72AF /* DeVega */,
 				CE7D1451172457B7000F72AF /* Frameworks */,
@@ -322,6 +325,7 @@
 				CE7D146C172457B7000F72AF /* MainStoryboard.storyboard in Resources */,
 				CEC26B8D17AD4BFF000B72B0 /* DeVegaTest-Info.plist in Resources */,
 				CEC26B8F17AD4BFF000B72B0 /* InfoPlist.strings in Resources */,
+				CE7E8B4017BC1430000C7FE9 /* new.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
