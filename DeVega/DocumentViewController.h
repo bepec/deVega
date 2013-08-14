@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EditorViewController.h"
 
-@interface DocumentViewController : UITableViewController <EditorViewControllerDelegate>
+@interface DocumentViewController : UITableViewController
 
 @property (nonatomic, strong) NSMutableArray *documents;
 

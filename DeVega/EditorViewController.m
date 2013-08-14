@@ -15,17 +15,14 @@
 
 @interface EditorViewController ()
 {
-//    AttributeController *boldfaceController;
     NSSet *attributeControllers;
     id<AttributeListController> attributeListController;
 }
 
 @end
 
-@implementation EditorViewController{
-}
+@implementation EditorViewController
 
-@synthesize delegate;
 @synthesize textView;
 @synthesize toggleBoldfaceButton;
 @synthesize toggleItalicsButton;
@@ -70,16 +67,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(void)close:(id)sender
-{
-    [self.delegate editorViewControllerDidClose:self];
-}
-
--(void)save:(id)sender
-{
-    [self.delegate editorViewControllerDidSave:self];
 }
 
 -(void)textViewDidChangeSelection:(UITextView *)sourceTextView

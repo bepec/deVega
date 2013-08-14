@@ -9,26 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Document.h"
 
-@class EditorViewController;
-
-
-@protocol EditorViewControllerDelegate <NSObject>
-
--(void)editorViewControllerDidClose:(EditorViewController *)controller;
--(void)editorViewControllerDidSave:(EditorViewController *)controller;
-
-@end
-
 @interface EditorViewController : UIViewController <UITextViewDelegate>
-
-@property (nonatomic, weak) id <EditorViewControllerDelegate> delegate;
 
 @property (nonatomic, weak) IBOutlet UIButton *toggleBoldfaceButton;
 @property (nonatomic, weak) IBOutlet UIButton *toggleItalicsButton;
 @property (nonatomic, weak) IBOutlet UITextView *textView;
-
--(IBAction)close:(id)sender;
--(IBAction)save:(id)sender;
 
 -(void)textViewDidChangeSelection:(UITextView *)textView;
 -(void)openDocument:(Document*)document;

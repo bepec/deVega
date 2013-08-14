@@ -51,7 +51,6 @@
 {
     if ([segue.identifier isEqualToString:@"Open"]) {
         _editorViewController = segue.destinationViewController;
-        _editorViewController.delegate = self;
     }
 }
 
@@ -131,24 +130,5 @@
     [_editorViewController openDocument:[documents objectAtIndex:indexPath.row]];
 }
 
-#pragma mark - Editor view controller delegate
-
-- (void)editorViewControllerDidClose:(EditorViewController *)controller
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-    [[[UIAlertView alloc] initWithTitle:@"deVega" message:@"Close" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-}
-
-- (NSString *)getNewFilename
-{
-    NSString *filename;
-    
-    return filename;
-}
-
-- (void)editorViewControllerDidSave:(EditorViewController *)controller
-{
-// paste code to save a document
-}
 
 @end

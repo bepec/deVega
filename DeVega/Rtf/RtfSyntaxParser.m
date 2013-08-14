@@ -12,13 +12,6 @@
 {
     id<RtfSyntaxParserDelegate> delegate;
     NSMutableData* buffer;
-    //    struct {
-    //        BOOL document;
-    //    } state;
-    //    enum {
-    //        RtfDecoderElementGroupBegin,
-    //        RtfDecoderElementGroupEnd
-    //    };
 }
 - (void)parseBuffer;
 @end
@@ -92,6 +85,9 @@ BOOL isControlSymbol(char symbol)
                 state = StateControl;
                 stateStartPosition = i;
             }
+            else if (currentSymbol == '\r' || currentSymbol == '\n') {
+                [delegate controlWord:@"par"];
+            }
             else if (currentSymbol == '*') {
                 [delegate controlWord:[NSString stringWithCharacters:&currentSymbol length:1]];
             }
@@ -161,12 +157,11 @@ BOOL isControlSymbol(char symbol)
             }
             else if (currentSymbol == '\r' || currentSymbol == '\n') {
                 if (i > stateStartPosition) {
-                    NSRange textRange = { stateStartPosition, i - stateStartPosition};
+                    NSRange textRange = { stateStartPosition, i - stateStartPosition };
                     NSData * data = [buffer subdataWithRange:textRange];
                     NSString* text = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
                     [delegate text:text];
                 }
-                stateStartPosition = i;
                 state = StateReset;
             }
         }
