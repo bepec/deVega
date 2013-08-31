@@ -11,10 +11,10 @@
 
 @interface AttributeListControllerTextView : NSObject
 
--(id)initWithTextView:(UITextView*)textView;
--(void)notifySubscribers;
--(void)subscribe:(id<AttributeListSubscriber>)subscriber;
--(void)setAttributes:(NSDictionary*)attributes;
--(NSDictionary*)attributes;
+- (id)initWithTextView:(UITextView*)textView;
+- (void)notifySubscribers;
+- (void)subscribe:(id<AttributeListSubscriber>)subscriber;
+- (void)setAttributes:(NSDictionary*)attributes;
+- (NSDictionary*)attributes;
 
 @end

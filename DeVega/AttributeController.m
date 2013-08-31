@@ -14,7 +14,6 @@
 //typedef NSFont UIFont;
 #endif
 
-
 @interface AttributeController ()
 {
     BOOL _state;
@@ -25,12 +24,12 @@
     BOOL (^_getStateFromFont)(UIFont *font);
     UIFont* (^_makeFontForState)(UIFont *font, BOOL state);
 }
--(id)init;
+- (id)init;
 @end
 
 @implementation AttributeController
 
-+(id)createBoldfaceController
++ (id)createBoldfaceController
 {
     AttributeController *controller = [AttributeController new];
     
@@ -45,7 +44,7 @@
     return controller;
 }
 
-+(id)createItalicsController
++ (id)createItalicsController
 {
     AttributeController *controller = [AttributeController new];
     
@@ -60,53 +59,53 @@
     return controller;
 }
 
--(id)init
+- (id)init
 {
-    self->_state = NO;
+    _state = NO;
     return self;
 }
 
--(void)setAttributeListController:(id<AttributeListController>)attributeListController
+- (void)setAttributeListController:(id<AttributeListController>)attributeListController
 {
-    self->_attributeListController = attributeListController;
+    _attributeListController = attributeListController;
     [attributeListController subscribe:self];
 }
 
--(void)setAttributeState:(BOOL)value
+- (void)setAttributeState:(BOOL)value
 {
-    NSDictionary *attributes = [self->_attributeListController attributes];
+    NSDictionary *attributes = [_attributeListController attributes];
     
     UIFont *font = (UIFont*)[attributes objectForKey:NSFontAttributeName];
     if (self->_getStateFromFont(font) == value)
         return;
     
-    UIFont *newFont = self->_makeFontForState(font, value);
+    UIFont *newFont = _makeFontForState(font, value);
 
     NSMutableDictionary *modifiedAttributes = [NSMutableDictionary dictionaryWithDictionary:attributes];
     [modifiedAttributes setObject:newFont forKey:NSFontAttributeName];
-    [self->_attributeListController setAttributes:modifiedAttributes];
+    [_attributeListController setAttributes:modifiedAttributes];
 }
 
--(BOOL)state
+- (BOOL)state
 {
-    return self->_state;
+    return _state;
 }
 
--(void)setDelegate:(id<AttributeControllerDelegate>)delegate
+- (void)setDelegate:(id<AttributeControllerDelegate>)delegate
 {
-    self->_delegate = delegate;
+    _delegate = delegate;
     [delegate update:self.state];
 }
 
--(void)attributesChanged:(NSDictionary *)attributes
+- (void)attributesChanged:(NSDictionary *)attributes
 {
     if (attributes == nil)
         return;
     UIFont *font = (UIFont*)[attributes objectForKey:NSFontAttributeName];
-    BOOL newState = self->_getStateFromFont(font);
-    if (newState != self.state) {
-        self->_state = newState;
-        [self->_delegate update:self->_state];
+    BOOL newState = _getStateFromFont(font);
+    if (newState != _state) {
+        _state = newState;
+        [_delegate update:_state];
     }
 }
 

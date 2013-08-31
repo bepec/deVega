@@ -11,6 +11,6 @@
 
 @interface AttributeControllerDelegateFactory : NSObject
 
-+(id<AttributeControllerDelegate>)delegateWithButton:(UIButton*)button andBlock:(void(^)())eventBlock;
++ (id<AttributeControllerDelegate>)delegateWithButton:(UIButton*)button andBlock:(void(^)())eventBlock;
 
 @end

@@ -13,15 +13,15 @@
     UIButton *_button;
     void (^_buttonEventBlock)();
 }
--(id)initWithButton:(UIButton*)button andBlock:(void(^)())eventBlock;
--(void)update:(BOOL)state;
+- (id)initWithButton:(UIButton*)button andBlock:(void(^)())eventBlock;
+- (void)update:(BOOL)state;
 
 @end
 
 
 @implementation AttributeStateDelegateButton
 
--(id)initWithButton:(UIButton*)button andBlock:(void(^)())eventBlock
+- (id)initWithButton:(UIButton*)button andBlock:(void(^)())eventBlock
 {
     self->_button = button;
     self->_buttonEventBlock = eventBlock;
@@ -29,23 +29,23 @@
     return self;
 }
 
--(void)update:(BOOL)state
+- (void)update:(BOOL)state
 {
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        self->_button.highlighted = state;
+        _button.highlighted = state;
     }];
 }
 
--(void)buttonEvent:(id)sender
+- (void)buttonEvent:(id)sender
 {
-    self->_buttonEventBlock();
+    _buttonEventBlock();
 }
 
 @end
 
 @implementation AttributeControllerDelegateFactory
 
-+(id<AttributeControllerDelegate>)delegateWithButton:(UIButton*)button andBlock:(void(^)())eventBlock
++ (id<AttributeControllerDelegate>)delegateWithButton:(UIButton*)button andBlock:(void(^)())eventBlock
 {
     return [[AttributeStateDelegateButton alloc] initWithButton:button andBlock:eventBlock];
 }

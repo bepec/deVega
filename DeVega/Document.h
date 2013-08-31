@@ -11,7 +11,6 @@
 @interface Document : NSObject
 
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *description;
 @property (nonatomic, copy) NSDate *modified;
 @property (nonatomic, copy) NSURL *url;
 

@@ -71,13 +71,7 @@
                             <constraint firstItem="IXF-Om-1rf" firstAttribute="trailing" secondItem="maN-kN-0Pq" secondAttribute="trailing" type="default" id="m9J-Cm-iNy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Document Editor" id="Ccb-vq-daW">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="G76-NV-GPc">
-                            <connections>
-                                <action selector="save:" destination="9Nv-Ip-5l0" id="c1Q-FW-xtG"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Document Editor" id="Ccb-vq-daW"/>
                     <connections>
                         <outlet property="textView" destination="IXF-Om-1rf" id="dA5-Xe-kMQ"/>
                         <outlet property="toggleBoldfaceButton" destination="PxK-wA-z0F" id="6TJ-l3-L14"/>
@@ -112,18 +106,9 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="101" contentMode="left" text="detailTextLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cag-7E-KGR">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="bIO-pa-C2G"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="102" contentMode="right" text="modifiedDateLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEt-HB-jJ3">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="113" type="user" id="SYZ-3w-Fey"/>
-                                                <constraint firstAttribute="height" constant="51" id="X7N-xe-v0l"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -134,16 +119,13 @@
                                 </view>
                                 <constraints>
                                     <constraint firstItem="V4b-kh-j7u" firstAttribute="leading" secondItem="2Yw-GK-PgP" secondAttribute="leading" constant="20" type="default" id="BZq-Hn-Vs0"/>
-                                    <constraint firstItem="cag-7E-KGR" firstAttribute="leading" secondItem="2Yw-GK-PgP" secondAttribute="leading" constant="20" type="default" id="DcP-vV-fRA"/>
-                                    <constraint firstItem="eEt-HB-jJ3" firstAttribute="leading" secondItem="cag-7E-KGR" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="M6q-bY-NHc"/>
                                     <constraint firstAttribute="trailing" secondItem="eEt-HB-jJ3" secondAttribute="trailing" constant="20" type="default" id="Rk8-sA-pLa"/>
                                     <constraint firstItem="eEt-HB-jJ3" firstAttribute="top" secondItem="2Yw-GK-PgP" secondAttribute="top" type="default" id="SOp-te-Sfh"/>
-                                    <constraint firstItem="cag-7E-KGR" firstAttribute="top" secondItem="2Yw-GK-PgP" secondAttribute="top" constant="25" id="jSL-TN-3v5"/>
-                                    <constraint firstItem="V4b-kh-j7u" firstAttribute="top" secondItem="2Yw-GK-PgP" secondAttribute="top" constant="10" id="lT8-BO-6Lh"/>
+                                    <constraint firstItem="V4b-kh-j7u" firstAttribute="top" secondItem="2Yw-GK-PgP" secondAttribute="top" constant="15" id="Vm2-O0-OwI"/>
+                                    <constraint firstItem="V4b-kh-j7u" firstAttribute="centerY" secondItem="eEt-HB-jJ3" secondAttribute="centerY" type="default" id="yA0-68-Xt2"/>
                                     <constraint firstItem="eEt-HB-jJ3" firstAttribute="leading" secondItem="V4b-kh-j7u" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="zjb-ys-IRG"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="descriptionLabel" destination="cag-7E-KGR" id="Hro-RE-Ize"/>
                                     <outlet property="modifiedDateLabel" destination="eEt-HB-jJ3" id="ELl-PC-w4U"/>
                                     <outlet property="titleLabel" destination="V4b-kh-j7u" id="Pas-V6-FZ1"/>
                                     <segue destination="9Nv-Ip-5l0" kind="push" identifier="Open" id="reK-nR-Kwj"/>
@@ -186,6 +168,29 @@
             <point key="canvasLocation" x="-1717" y="-854"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="DocumentCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DocumentCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="modifiedDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="DocumentViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DocumentViewController.h"/>
+        </class>
+        <class className="EditorViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditorViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="toggleBoldfaceButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="toggleItalicsButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

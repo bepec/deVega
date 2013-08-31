@@ -11,7 +11,6 @@
 @implementation Document
 
 @synthesize title;
-@synthesize description;
 @synthesize modified;
 @synthesize url;
 

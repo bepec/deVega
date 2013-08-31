@@ -29,42 +29,42 @@
 
 -(void)subscribe:(id<AttributeListSubscriber>)subscriber
 {
-    [self->_subscribers addObject:subscriber];
+    [_subscribers addObject:subscriber];
 }
 
 -(void)setAttributes:(NSDictionary*)attributes
 {
-    NSRange range = self->_textView.selectedRange;
+    NSRange range = _textView.selectedRange;
     if (range.length == 0) {
-        self->_textView.typingAttributes = attributes;
+        _textView.typingAttributes = attributes;
     }
     else {
-        NSMutableAttributedString *modifiedString = [[NSMutableAttributedString alloc] initWithAttributedString:self->_textView.attributedText];
+        NSMutableAttributedString *modifiedString = [[NSMutableAttributedString alloc] initWithAttributedString:_textView.attributedText];
         [modifiedString setAttributes:attributes range:range];
-        self->_textView.attributedText = modifiedString;
-        self->_textView.selectedRange = range;
+        _textView.attributedText = modifiedString;
+        _textView.selectedRange = range;
     }
     [self notifySubscribers];
 }
 
 -(NSDictionary*)attributes
 {
-    NSRange range = self->_textView.selectedRange;
+    NSRange range = _textView.selectedRange;
     if (range.location == NSNotFound) {
         return nil;
     }
     else if (range.length == 0) {
-        return self->_textView.typingAttributes;
+        return _textView.typingAttributes;
     }
     else {
-        return [self->_textView.attributedText attributesAtIndex:range.location
+        return [_textView.attributedText attributesAtIndex:range.location
                                            effectiveRange:nil];
     }
 }
 
 -(void)notifySubscribers
 {
-    for (id<AttributeListSubscriber> subscriber in self->_subscribers) {
+    for (id<AttributeListSubscriber> subscriber in _subscribers) {
         [subscriber attributesChanged:self.attributes];
     }
 }

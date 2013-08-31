@@ -124,26 +124,21 @@
     [self appendString:text];
 }
 
-- (void)error
-{
-    
-}
-
 // AttributeStringController methods
 
--(void)notifySubscribers
+- (void)notifySubscribers
 {
     for (id<AttributeListSubscriber>subscriber in _subscribers) {
         [subscriber attributesChanged:self.attributes];
     }
 }
 
--(void)subscribe:(id<AttributeListSubscriber>)subscriber
+- (void)subscribe:(id<AttributeListSubscriber>)subscriber
 {
     [_subscribers addObject:subscriber];
 }
 
--(void)setAttributes:(NSDictionary*)attributes
+- (void)setAttributes:(NSDictionary*)attributes
 {
     assert(_attributesStack.count > 0);
     
@@ -152,7 +147,7 @@
     [self notifySubscribers];
 }
 
--(NSDictionary*)attributes
+- (NSDictionary*)attributes
 {
     return _attributesStack.count == 0 ? _defaultAttributes : _attributesStack.lastObject;
 }

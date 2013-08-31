@@ -22,7 +22,6 @@
 - (void)groupStart;
 - (void)groupEnd;
 - (void)text:(NSString*)text;
-- (void)error;
 
 // AttributeListController methods
 - (void)notifySubscribers;

@@ -15,8 +15,8 @@
 
 @interface EditorViewController ()
 {
-    NSSet *attributeControllers;
-    id<AttributeListController> attributeListController;
+    NSSet *_attributeControllers;
+    id<AttributeListController> _attributeListController;
 }
 
 @end
@@ -30,31 +30,29 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-    }
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    self.textView.delegate = self;
+
+    textView.delegate = self;
     
-    self->attributeListController = (id<AttributeListController>)[[AttributeListControllerTextView alloc] initWithTextView:self.textView];
+    _attributeListController = (id<AttributeListController>)[[AttributeListControllerTextView alloc] initWithTextView:textView];
     
     AttributeController *boldfaceController = [AttributeController createBoldfaceController];
-    boldfaceController.attributeListController = (id<AttributeListController>)self->attributeListController;
+    boldfaceController.attributeListController = (id<AttributeListController>)_attributeListController;
     boldfaceController.delegate = [AttributeControllerDelegateFactory delegateWithButton:toggleBoldfaceButton andBlock:^{ [boldfaceController setAttributeState:!boldfaceController.state]; }];
 
     AttributeController *italicsController = [AttributeController createItalicsController];
-    italicsController.attributeListController = (id<AttributeListController>)self->attributeListController;
+    italicsController.attributeListController = (id<AttributeListController>)_attributeListController;
     italicsController.delegate = [AttributeControllerDelegateFactory delegateWithButton:toggleItalicsButton andBlock:^{ [italicsController setAttributeState:!italicsController.state]; }];
     
-    self->attributeControllers = [NSSet setWithObjects:boldfaceController, italicsController, nil];
+    _attributeControllers = [NSSet setWithObjects:boldfaceController, italicsController, nil];
 }
 
--(void)openDocument:(Document*)document
+- (void)openDocument:(Document*)document
 {
     RtfSyntaxParser *parser = [RtfSyntaxParser new];
     NSDictionary *attributes = [textView.attributedText attributesAtIndex:0 effectiveRange:nil];
@@ -63,15 +61,9 @@
     textView.attributedText = builder.output;
 }
 
-- (void)didReceiveMemoryWarning
+- (void)textViewDidChangeSelection:(UITextView *)sourceTextView
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
--(void)textViewDidChangeSelection:(UITextView *)sourceTextView
-{
-    [self->attributeListController notifySubscribers];
+    [_attributeListController notifySubscribers];
 }
 
 @end

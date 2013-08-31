@@ -16,19 +16,19 @@ NSString *const FONTNAME_ITALIC = @"Helvetica-Oblique";
 NSString *const FONTNAME_BOLDITALIC = @"Helvetica-BoldOblique";
 
 
-+(BOOL)isBold:(NSString*)fontName
++ (BOOL)isBold:(NSString*)fontName
 {
     return ([fontName isEqualToString:FONTNAME_BOLD] ||
             [fontName isEqualToString:FONTNAME_BOLDITALIC]);
 }
 
-+(BOOL)isItalic:(NSString*)fontName
++ (BOOL)isItalic:(NSString*)fontName
 {
     return ([fontName isEqualToString:FONTNAME_ITALIC] ||
             [fontName isEqualToString:FONTNAME_BOLDITALIC]);
 }
 
-+(NSString*)setBold:(BOOL)value from:(NSString*)fontName
++ (NSString*)setBold:(BOOL)value from:(NSString*)fontName
 {
     if (value == TRUE) {
         if ([fontName isEqualToString:FONTNAME_REGULAR]) {
@@ -49,7 +49,7 @@ NSString *const FONTNAME_BOLDITALIC = @"Helvetica-BoldOblique";
     return fontName;
 }
 
-+(NSString*)setItalic:(BOOL)value from:(NSString*)fontName
++ (NSString*)setItalic:(BOOL)value from:(NSString*)fontName
 {
     if (value == TRUE) {
         if ([fontName isEqualToString:FONTNAME_REGULAR]) {

@@ -15,9 +15,6 @@
 - (void)groupEnd;
 - (void)text:(NSString*)text;
 
-@optional
-- (void)error;
-
 @end
 
 

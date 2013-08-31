@@ -10,9 +10,9 @@
 
 @interface FontNameResolver : NSObject
 
-+(BOOL)isBold:(NSString*)fontName;
-+(BOOL)isItalic:(NSString*)fontName;
-+(NSString*)setBold:(BOOL)value from:(NSString*)fontName;
-+(NSString*)setItalic:(BOOL)value from:(NSString*)fontName;
++ (BOOL)isBold:(NSString*)fontName;
++ (BOOL)isItalic:(NSString*)fontName;
++ (NSString*)setBold:(BOOL)value from:(NSString*)fontName;
++ (NSString*)setItalic:(BOOL)value from:(NSString*)fontName;
 
 @end

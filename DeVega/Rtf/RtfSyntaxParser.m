@@ -21,7 +21,9 @@
 - (id)init
 {
     self = [super init];
-    buffer = [NSMutableData new];
+    if (self) {
+        buffer = [NSMutableData new];
+    }
     return self;
 }
 
